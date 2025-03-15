@@ -1,5 +1,5 @@
 {
-	"name": "@jlbelanger/glick-app",
+	"name": "@jlbelanger/glick",
 	"version": "1.0.0",
 	"description": "Track occurrences of time-based events.",
 	"license": "GPL-3.0-only",
@@ -10,7 +10,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/jlbelanger/glick-app.git"
+		"url": "https://github.com/jlbelanger/glick.git"
 	},
 	"scripts": {
 		"start": "npx update-browserslist-db@latest && react-scripts start",

@@ -10,4 +10,6 @@ jobs:
         node-version: '22'
     - uses: actions/checkout@v3
     - run: yarn install
+      working-directory: app
     - run: yarn run lint
+      working-directory: app

@@ -1,4 +1,4 @@
-# Glick API
+# Glick
 
 [View the site](https://glick.jennybelanger.com/).
 
@@ -8,20 +8,21 @@
 
 - [Composer](https://getcomposer.org/)
 - [Git](https://git-scm.com/)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install)
 - Database
 - Web server with PHP
 
 ### Setup
 
 ``` bash
-# Clone the API repo
-git clone https://github.com/jlbelanger/glick-api.git
-cd glick-api
+# Clone the repo
+git clone https://github.com/jlbelanger/glick.git
 
-# Configure the environment settings
+# Configure the PHP environment settings
+cd glick/api
 cp .env.example .env
 
-# Install dependencies
+# Install PHP dependencies
 composer install
 
 # Generate key
@@ -36,20 +37,43 @@ chown -R www-data:www-data storage
 
 # Create account with username "test" and password "password" (or reset existing account password to "password")
 php artisan auth:reset-admin
+
+# Configure the JS environment settings
+cd ../app
+cp .env.example .env
+cp .env.example .env.production
+cp cypress.env.example.json cypress.env.json
+
+# Install JS dependencies
+yarn install
 ```
 
-Then, setup the [Glick app](https://github.com/jlbelanger/glick-app).
+### Run
+
+``` bash
+cd app && yarn start
+```
+
+Your browser should automatically open http://localhost:3000/
 
 ### Lint
 
 ``` bash
-./vendor/bin/phpcs
+./api/vendor/bin/phpcs
+```
+
+``` bash
+cd app && yarn lint
 ```
 
 ### Test
 
 ``` bash
-./vendor/bin/phpunit
+./api/vendor/bin/phpunit
+```
+
+``` bash
+cd app && yarn test:cypress
 ```
 
 ## Deployment
@@ -57,24 +81,31 @@ Then, setup the [Glick app](https://github.com/jlbelanger/glick-app).
 Essentially, to set up the repo on the server:
 
 ``` bash
-git clone https://github.com/jlbelanger/glick-api.git
-cd glick-api
+git clone https://github.com/jlbelanger/glick.git
+cd glick/api
 cp .env.example .env
 # Then configure the values in .env.
 composer install
 php artisan key:generate
 php artisan migrate
 chown -R www-data:www-data storage
+cd ../app
+cp .env.example .env
+# Then configure the values in .env.
+yarn build
 ```
 
 For subsequent deploys, push changes to the main branch, then run the following on the server:
 
 ``` bash
-cd glick-api
+cd glick
 git fetch origin
 git pull
+cd api
 composer install
 php artisan config:clear
+cd ../app
+yarn build
 ```
 
 ### Deploy script
