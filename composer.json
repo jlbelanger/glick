@@ -1,0 +1,75 @@
+{
+	"name": "jlbelanger/glick-api",
+	"description": "Track occurrences of time-based events.",
+	"version": "1.0.0",
+	"type": "project",
+	"license": "GPL-3.0-only",
+	"authors": [
+		{
+			"name": "Jenny Belanger",
+			"email": "mail@jennybelanger.com",
+			"homepage": "https://www.jennybelanger.com/"
+		}
+	],
+	"require": {
+		"php": "^8.4",
+		"guzzlehttp/guzzle": "^7.9.2",
+		"jlbelanger/tapioca": "dev-main#831c1b22159eccdfdefbdf369b3fb1d876ec88ed",
+		"laravel/framework": "^11.36.1",
+		"laravel/sanctum": "^4.0.7"
+	},
+	"require-dev": {
+		"fakerphp/faker": "^1.24.1",
+		"filp/whoops": "^2.16.0",
+		"mockery/mockery": "^1.6.12",
+		"nunomaduro/collision": "^8.5.0",
+		"phpunit/phpunit": "^11.5.2",
+		"squizlabs/php_codesniffer": "^3.11.2"
+	},
+	"autoload": {
+		"psr-4": {
+			"App\\": "app/",
+			"Database\\Factories\\": "database/factories/",
+			"Database\\Seeders\\": "database/seeders/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Tests\\": "tests/"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "git@github.com:jlbelanger/tapioca.git"
+		}
+	],
+	"config": {
+		"discard-changes": true,
+		"optimize-autoloader": true,
+		"preferred-install": "dist",
+		"sort-packages": true
+	},
+	"scripts": {
+		"post-autoload-dump": [
+			"Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+			"@php artisan package:discover --ansi"
+		],
+		"post-update-cmd": [
+			"@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+		],
+		"post-root-package-install": [
+			"@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+		],
+		"post-create-project-cmd": [
+			"@php artisan key:generate --ansi"
+		]
+	},
+	"extra": {
+		"laravel": {
+			"dont-discover": []
+		}
+	}
+}
