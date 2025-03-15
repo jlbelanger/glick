@@ -1,0 +1,57 @@
+@use '../utilities/variables';
+
+#chart-container {
+	height: 250px;
+	margin: 0 8px;
+	max-height: calc(100vh - #{(variables.$nav-height * 5)});
+}
+
+.chart-field-container {
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: variables.$list-padding-top variables.$list-padding-side;
+}
+
+#chart-filters {
+	display: flex;
+
+	@media (width > 320px) {
+		justify-content: flex-start;
+	}
+}
+
+#chart-stats {
+	margin: calc(variables.$list-padding-top - 8px) calc(variables.$list-padding-side - 8px);
+
+	@media (width > 320px) {
+		display: flex;
+	}
+}
+
+.stat {
+	display: inline-block;
+	margin: 8px;
+}
+
+.formosa-field.chart-field {
+	align-items: center;
+	display: flex;
+	margin: 0;
+	padding: 0;
+
+	.formosa-label-wrapper {
+		margin: 0 8px 0 0;
+	}
+}
+
+.formosa-field.range,
+.formosa-field.unit {
+	align-items: center;
+	display: flex;
+	margin: 16px 0;
+
+	.formosa-label-wrapper {
+		margin: 0 8px 0 0;
+	}
+}

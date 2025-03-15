@@ -1,0 +1,60 @@
+@use '../utilities/variables';
+
+p,
+.formosa-field {
+	margin: 24px 0 0;
+}
+
+.formosa-field {
+	padding-left: variables.$list-padding-side;
+	padding-right: variables.$list-padding-side;
+}
+
+.formosa-label-wrapper:empty {
+	display: none;
+}
+
+.formosa-input-wrapper--checkbox {
+	position: relative;
+}
+
+.formosa-label__note {
+	display: inline-block;
+	font-size: 80%;
+	margin-left: 4px;
+	opacity: .5;
+
+	&::before {
+		content: ' (';
+	}
+
+	&::after {
+		content: ')';
+	}
+}
+
+.formosa-input-wrapper--submit {
+	text-align: right;
+}
+
+.formosa-button--submit {
+	max-width: 180px;
+	width: 100%;
+}
+
+.formosa-input-inner-wrapper {
+	display: flex;
+}
+
+#heading-spacer + .formosa-alert,
+#heading-spacer + form > .formosa-alert:first-child {
+	margin-top: 20px;
+}
+
+.formosa-prefix {
+	border-right-color: transparent;
+}
+
+.formosa-postfix {
+	border-left-color: transparent;
+}

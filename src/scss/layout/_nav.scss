@@ -1,0 +1,43 @@
+@use '../utilities/mixins';
+@use '../utilities/variables';
+
+#nav {
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+}
+
+.nav__button,
+.nav__link {
+	@include mixins.gradient(variables.$light-purple, variables.$dark-purple, variables.$black);
+
+	color: variables.$white;
+	height: variables.$nav-height;
+	text-shadow: 0 2px 0 variables.$black;
+}
+
+.nav__link {
+	align-items: center;
+	display: flex;
+	flex: 1 1 auto;
+	justify-content: center;
+	text-decoration: none;
+
+	&:hover {
+		@include mixins.gradient(variables.$light-purple, variables.$purple, variables.$black);
+	}
+
+	& + .nav__link {
+		margin-left: 2px;
+	}
+}
+
+.nav__link--active {
+	background: variables.$darkest-purple;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background: variables.$black;
+	}
+}

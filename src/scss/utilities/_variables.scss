@@ -1,0 +1,58 @@
+@use 'sass:color';
+
+/* Colors. */
+
+$dark-green: #096;
+$darker-green: color.scale($dark-green, $lightness: -30%);
+$darkest-green: color.scale($darker-green, $lightness: -30%);
+$green: #3c9;
+$light-green: #4da;
+$lighter-green: #6fc;
+$lightest-green: #8fe;
+
+$darkest-purple: #101;
+$purple: #4b318c;
+$darker-purple: color.scale($purple, $lightness: -50%);
+$dark-purple: color.scale($purple, $lightness: -35%);
+$light-purple: color.scale($purple, $lightness: 5%);
+$lighter-purple: color.scale($purple, $lightness: 20%);
+$lightest-purple: color.scale($purple, $lightness: 50%);
+
+$red: #cc411f;
+$darker-red: color.scale($red, $lightness: -50%);
+$dark-red: color.scale($red, $lightness: -35%);
+$light-red: color.scale($red, $lightness: 5%);
+$lighter-red: color.scale($red, $lightness: 20%);
+$lightest-red: color.scale($red, $lightness: 50%);
+
+$bright-purple: #b656b6;
+
+$white: #fff;
+$black: #000;
+
+/* Sizes. */
+
+$border-radius: 10px;
+$padding: 8px;
+$font-size: 16px;
+$max-width: 600px;
+$nav-height: 44px;
+
+$list-padding-top: 14px;
+$list-padding-side: 16px;
+
+$modal-background-color: $darker-purple;
+$modal-button-margin-side: 8px;
+$modal-button-margin-top: 20px;
+$modal-container-background-color: rgba($black, .6);
+$modal-input-background-color: $white;
+$modal-margin: 32px;
+$modal-max-width: 800px;
+$modal-padding: 32px;
+$modal-text-color: $black;
+$modal-zindex: 9999;
+
+$has-many-padding: 4px;
+$has-many-padding-side: 0;
+
+$font: 'Trebuchet MS', sans-serif;

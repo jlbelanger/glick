@@ -1,0 +1,11 @@
+.DS_Store
+.env
+.env.production
+.eslintcache
+.gitcommit
+*.log
+/build
+build.zip
+cypress.env.json
+node_modules
+TODO.md

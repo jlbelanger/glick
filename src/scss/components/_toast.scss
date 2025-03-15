@@ -1,0 +1,15 @@
+@use '../utilities/variables';
+
+.formosa-toast-container {
+	bottom: variables.$nav-height;
+}
+
+.formosa-toast__close {
+	background: transparent;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background: transparent;
+	}
+}

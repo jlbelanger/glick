@@ -1,0 +1,26 @@
+@use '../utilities/mixins';
+
+input,
+select,
+textarea {
+	@include mixins.gradient(#fff, #fff, #ccc);
+
+	&:invalid:not(:focus) {
+		box-shadow: none;
+	}
+}
+
+.formosa-input-wrapper--checkbox-list {
+	.formosa-radio {
+		display: flex;
+	}
+
+	.formosa-radio__item {
+		margin-right: 1rem;
+	}
+}
+
+.formosa-field__error > div::before {
+	content: 'Error: ';
+	display: inline;
+}

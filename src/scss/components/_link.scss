@@ -1,0 +1,11 @@
+@use '../utilities/variables';
+
+a {
+	color: variables.$green;
+
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: none;
+	}
+}

@@ -1,0 +1,6 @@
+@use '../utilities/variables';
+
+.contain {
+	max-width: variables.$max-width;
+	width: 100%;
+}

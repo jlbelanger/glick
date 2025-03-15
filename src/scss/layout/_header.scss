@@ -1,0 +1,108 @@
+@use '../utilities/mixins';
+@use '../utilities/variables';
+
+#header {
+	box-shadow: inset 0 -1px 0 0 variables.$purple;
+	display: flex;
+	justify-content: center;
+	top: 0;
+}
+
+#header__contain {
+	display: flex;
+
+	.nav__link {
+		flex: 0 0 auto;
+		padding: 16px;
+	}
+
+	.nav__button {
+		border-radius: 0;
+		border-width: 0;
+		font-weight: normal;
+		margin: 0;
+		padding: 0 16px;
+		text-transform: none;
+
+		&[disabled] {
+			visibility: hidden;
+		}
+
+		&:hover,
+		&:active,
+		&:focus {
+			@include mixins.gradient(variables.$light-purple, variables.$purple, variables.$black);
+
+			text-shadow: 0 2px 0 variables.$black;
+		}
+	}
+
+	.nav__button,
+	.nav__link {
+		height: calc(variables.$nav-height - 1px);
+	}
+
+	.nav__link--active {
+		background: variables.$dark-purple;
+	}
+}
+
+#logo {
+	align-items: center;
+	color: variables.$white;
+	display: flex;
+	flex: 1 1 auto;
+	font-size: 30px;
+	justify-content: center;
+	letter-spacing: -3px;
+	margin: 0;
+	text-shadow: 0 2px 0 variables.$black;
+}
+
+#heading {
+	background: variables.$dark-purple;
+	color: variables.$white;
+	height: variables.$nav-height;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: variables.$nav-height;
+	z-index: 2;
+
+	a {
+		color: variables.$white;
+		display: block;
+		margin-left: auto;
+		padding: variables.$list-padding-side;
+		text-decoration: none;
+		white-space: nowrap;
+	}
+}
+
+#heading-inner {
+	align-items: center;
+	display: flex;
+	height: variables.$nav-height;
+	margin: 0 auto;
+	max-width: variables.$max-width;
+	padding-left: variables.$list-padding-side;
+	width: 100%;
+}
+
+#heading-title {
+	font-size: variables.$font-size;
+	letter-spacing: 2px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-shadow: 0 2px 0 variables.$black;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+#heading-spacer {
+	height: variables.$nav-height;
+}
+
+#heading + #heading-spacer {
+	height: calc(variables.$nav-height * 2);
+}

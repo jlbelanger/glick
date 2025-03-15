@@ -1,0 +1,64 @@
+@use 'utilities/variables' as *;
+@use 'utilities/mixins';
+@use '~normalize.css/normalize';
+@use '~@jlbelanger/formosa/src/scss/utilities/variables' with (
+	$formosa-input-border-color: #bbb,
+	$formosa-input-border-radius: $border-radius,
+	$formosa-input-border-width: 2px,
+	$formosa-input-font-size: $font-size,
+	$formosa-input-padding: $padding,
+	$formosa-input-font-family: $font,
+
+	$formosa-button-background-color: $lighter-green,
+	$formosa-button-border-color: $dark-green,
+	$formosa-button-padding-side: $padding,
+	$formosa-input-line-height: 1,
+
+	$formosa-checkbox-border-radius: $border-radius,
+
+	$formosa-color-danger: $lighter-red,
+
+	$formosa-focus-border-color: $lighter-purple,
+	$formosa-focus-box-shadow-color: $bright-purple,
+
+	$formosa-label-font-weight: normal,
+
+	$formosa-postfix-border-width: 1px,
+
+	$formosa-radio-border-radius: $border-radius,
+	$formosa-radio-border-width: 0,
+	$formosa-radio-margin: 0,
+	$formosa-radio-margin-side: 0,
+
+	$formosa-spinner-color: $green,
+	$formosa-spinner-color-alternate: $darker-purple,
+
+	$formosa-success-background-color: $green,
+);
+@use '~@jlbelanger/formosa/src/style';
+@use 'layout/main';
+@use 'layout/header';
+@use 'layout/nav';
+@use 'layout/content';
+@use 'layout/footer';
+@use 'components/button';
+@use 'components/chart';
+@use 'components/contain';
+@use 'components/formosa-overrides';
+@use 'components/has-many';
+@use 'components/heading';
+@use 'components/helpers';
+@use 'components/input';
+@use 'components/link';
+@use 'components/list';
+@use 'components/modal';
+@use 'components/p';
+@use 'components/radio';
+@use 'components/small';
+@use 'components/suffix';
+@use 'components/table';
+@use 'components/toast';
+
+.submit-with-postfix {
+	display: flex;
+}

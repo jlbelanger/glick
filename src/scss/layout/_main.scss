@@ -1,0 +1,30 @@
+@use '~@jlbelanger/formosa/src/scss/utilities/variables' as formosa;
+@use '../utilities/variables';
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: variables.$black;
+	color: variables.$white;
+	font-family: formosa.$formosa-input-font-family;
+	font-size: variables.$font-size;
+	margin: 0;
+}
+
+#main {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+#header,
+#footer {
+	background: variables.$darker-purple;
+	height: variables.$nav-height;
+	left: 0;
+	position: fixed;
+	right: 0;
+	z-index: 9997;
+}

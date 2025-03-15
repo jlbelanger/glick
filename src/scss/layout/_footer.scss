@@ -1,0 +1,7 @@
+@use '../utilities/variables';
+
+#footer {
+	bottom: 0;
+	box-shadow: inset 0 1px 0 0 variables.$purple;
+	order: 2;
+}

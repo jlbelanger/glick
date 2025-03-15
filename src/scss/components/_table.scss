@@ -1,0 +1,49 @@
+@use '../utilities/variables';
+
+table {
+	border-spacing: 0;
+	width: 100%;
+}
+
+th {
+	background: variables.$darker-purple;
+	color: variables.$white;
+	font-size: variables.$font-size;
+	letter-spacing: 2px;
+	padding: variables.$list-padding-top variables.$list-padding-side;
+	text-align: left;
+	text-shadow: 0 2px 0 variables.$black;
+	text-transform: uppercase;
+}
+
+td {
+	line-height: 1;
+}
+
+.table__row + .table__row td {
+	border-top: 1px solid variables.$purple;
+}
+
+.table__link {
+	color: variables.$white;
+	display: flex;
+	padding: variables.$list-padding-top variables.$list-padding-side;
+	text-decoration: none;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background: variables.$darkest-purple;
+	}
+}
+
+.table__label {
+	flex: 1 1 auto;
+	line-height: 1.2;
+	word-break: break-word;
+}
+
+.table__time {
+	margin-left: 8px;
+	white-space: nowrap;
+}

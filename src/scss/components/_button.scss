@@ -1,0 +1,147 @@
+@use 'sass:color';
+@use '../utilities/mixins';
+@use '../utilities/variables';
+
+button,
+.button,
+.formosa-input-wrapper--radio .formosa-radio__label {
+	@include mixins.gradient(variables.$lighter-green, variables.$green, variables.$dark-green);
+
+	cursor: pointer;
+	font-weight: bold;
+	text-shadow: 0 1px 0 variables.$lighter-green;
+	text-transform: uppercase;
+	white-space: nowrap;
+
+	&:hover {
+		@include mixins.gradient(variables.$lighter-green, variables.$light-green, variables.$dark-green);
+	}
+
+	&:active,
+	&:focus {
+		@include mixins.gradient(variables.$dark-green, color.scale(variables.$green, $lightness: -10%), variables.$green);
+
+		border-color: variables.$darker-green;
+		text-shadow: 0 -1px 0 variables.$light-green;
+	}
+
+	&.button--secondary,
+	&.formosa-button--toggle-password {
+		@include mixins.gradient(variables.$lighter-purple, variables.$light-purple, variables.$dark-purple);
+
+		border-color: variables.$purple;
+		color: variables.$white;
+		text-shadow: 0 1px 0 variables.$darkest-purple;
+
+		&:hover {
+			@include mixins.gradient(variables.$lighter-purple, variables.$lighter-purple, variables.$dark-purple);
+		}
+
+		&:active,
+		&:focus {
+			@include mixins.gradient(variables.$purple, color.scale(variables.$light-purple, $lightness: -5%), variables.$lighter-purple);
+
+			border-color: variables.$dark-purple;
+			text-shadow: 0 -1px 0 variables.$darkest-purple;
+		}
+	}
+
+	&.button--danger,
+	&.formosa-button--danger {
+		@include mixins.gradient(variables.$lighter-red, variables.$red, variables.$dark-red);
+
+		border-color: variables.$dark-red;
+		color: variables.$white;
+		text-shadow: 0 1px 0 variables.$darker-red;
+
+		&:hover {
+			@include mixins.gradient(variables.$lighter-red, variables.$light-red, variables.$dark-red);
+		}
+
+		&:active,
+		&:focus {
+			@include mixins.gradient(color.scale(variables.$red, $lightness: -15%), variables.$red, color.scale(variables.$light-red, $lightness: 3%));
+
+			border-color: variables.$darker-red;
+			text-shadow: 0 -1px 0 variables.$darker-red;
+		}
+	}
+
+	&[disabled] {
+		@include mixins.gradient(#999, #666, #333);
+
+		border-color: #666;
+		color: variables.$white;
+		pointer-events: none;
+		text-shadow: 0 1px 0 #000;
+	}
+}
+
+.formosa-button {
+	font-weight: bold;
+}
+
+.formosa-input-wrapper--radio {
+	.formosa-radio__label {
+		&:focus-within {
+			@include mixins.gradient(variables.$dark-green, color.scale(variables.$green, $lightness: -10%), variables.$green);
+
+			border-color: variables.$darker-green;
+			text-shadow: 0 -1px 0 variables.$light-green;
+		}
+	}
+
+	.formosa-radio__label--checked {
+		@include mixins.gradient(variables.$darkest-green, variables.$darker-green, variables.$darker-green);
+
+		color: variables.$white;
+		text-shadow: 0 -1px 0 variables.$darkest-green;
+
+		&.formosa-radio__label {
+			color: variables.$white;
+		}
+
+		&:hover {
+			@include mixins.gradient(variables.$darkest-green, variables.$darker-green, variables.$darker-green);
+		}
+
+		&:active,
+		&:focus,
+		&:focus-within {
+			@include mixins.gradient(variables.$darkest-green, variables.$darker-green, variables.$darker-green);
+
+			border-color: variables.$dark-green;
+			text-shadow: 0 -1px 0 variables.$dark-green;
+		}
+	}
+}
+
+.button--link {
+	background-color: transparent;
+	border-color: transparent;
+	color: variables.$green;
+	display: inline-block;
+	font-weight: normal;
+	white-space: nowrap;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: transparent;
+	}
+}
+
+button.formosa-button.button--link {
+	background: transparent;
+	text-decoration: underline;
+	text-shadow: none;
+	text-transform: none;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background: transparent;
+		border-color: transparent;
+		text-decoration: none;
+	}
+}

@@ -1,0 +1,19 @@
+$has-many-padding: 2px;
+$has-many-padding-side: $has-many-padding;
+
+.formosa-has-many {
+	border-spacing: 0;
+	margin: calc($has-many-padding * -1) calc($has-many-padding-side * -1);
+}
+
+.formosa-has-many__column {
+	padding: $has-many-padding $has-many-padding-side;
+}
+
+.formosa-has-many__button {
+	width: 100%;
+}
+
+.formosa-has-many__column--button {
+	width: 0;
+}

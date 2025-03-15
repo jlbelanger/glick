@@ -1,0 +1,4 @@
+@mixin gradient($top, $main, $bottom) {
+	background: $main;
+	background: linear-gradient(0deg, $bottom 5%, $main 5%, $main 95%, $top 95%);
+}
