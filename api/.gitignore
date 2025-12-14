@@ -4,4 +4,3 @@
 *.log
 /bootstrap/cache/*.php
 /vendor
-TODO.md
