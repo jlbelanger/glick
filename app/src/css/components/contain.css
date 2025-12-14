@@ -1,0 +1,4 @@
+.contain {
+	max-width: var(--max-width);
+	width: 100%;
+}

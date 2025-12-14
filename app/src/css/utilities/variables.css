@@ -1,0 +1,106 @@
+:root {
+	/* Colors - greens. */
+	--dark-green: #096;
+	--darkish-green: #2eb88a; /* color.scale(var(--green), var(--lightness): -10%); */
+	--darker-green: #006b47; /* color.scale(var(--dark-green), var(--lightness): -30%); */
+	--darkest-green: #004b32; /* color.scale(var(--darker-green), var(--lightness): -30%); */
+	--green: #3c9;
+	--light-green: #4da;
+	--lighter-green: #6fc;
+	--lightest-green: #8fe;
+
+	/* Colors - purples. */
+	--darkest-purple: #101;
+	--purple: #4b318c;
+	--darker-purple: #261946; /* color.scale(var(--purple), var(--lightness): -50%); */
+	--dark-purple: #31205b; /* color.scale(var(--purple), var(--lightness): -35%); */
+	--lightish-purple: #4d3390; /* color.scale(var(--light-purple), var(--lightness): -5%); */
+	--light-purple: #513598; /* color.scale(var(--purple), var(--lightness): 5%); */
+	--lighter-purple: #6442bc; /* color.scale(var(--purple), var(--lightness): 20%); */
+	--bright-purple: #b656b6;
+
+	/* Colors - reds. */
+	--red: #cc411f;
+	--darkish-red: #de4823; /* color.scale(var(--red), var(--lightness): -15%); */
+	--darker-red: #662110; /* color.scale(var(--red), var(--lightness): -50%); */
+	--dark-red: #852a14; /* color.scale(var(--red), var(--lightness): -35%); */
+	--light-red: #d84521; /* color.scale(var(--red), var(--lightness): 5%); */
+	--lighter-red: #e26040; /* color.scale(var(--red), var(--lightness): 20%); */
+	--lightish-red: #ad371a; /* color.scale(var(--light-red), var(--lightness): 3%); */
+
+	/* Colors - grays. */
+	--white: #fff;
+	--black: #000;
+
+	/* Sizes. */
+	--border-radius: 10px;
+	--padding: 8px;
+	--font-size: 16px;
+	--max-width: 600px;
+	--nav-height: 44px;
+
+	/* Lists. */
+	--list-padding-top: 14px;
+	--list-padding-side: 16px;
+
+	/* Modals. */
+	--modal-background-color: var(--darker-purple);
+	--modal-button-margin-side: 8px;
+	--modal-button-margin-top: 20px;
+	--modal-container-background-color: hsl(from var(--black) h s l / 60%);
+	--modal-input-background-color: var(--white);
+	--modal-margin: 32px;
+	--modal-max-width: 800px;
+	--modal-padding: 32px;
+	--modal-text-color: var(--black);
+	--modal-zindex: 9999;
+
+	/* Has many. */
+	--has-many-padding: 2px;
+
+	/* Fonts. */
+	--font: 'Trebuchet MS', sans-serif;
+
+	/* Inputs. */
+	--formosa-input-border-color: #bbb;
+	--formosa-input-border-radius: var(--border-radius);
+	--formosa-input-border-width: 2px;
+	--formosa-input-font-size: var(--font-size);
+	--formosa-input-padding: var(--padding);
+	--formosa-input-font-family: var(--font);
+
+	/* Buttons. */
+	--formosa-button-background-color: var(--lighter-green);
+	--formosa-button-border-color: var(--dark-green);
+	--formosa-button-padding-side: var(--padding);
+	--formosa-input-line-height: 1;
+
+	/* Checkboxes. */
+	--formosa-checkbox-border-radius: var(--border-radius);
+
+	/* Colors. */
+	--formosa-color-danger: var(--lighter-red);
+
+	/* Focus. */
+	--formosa-focus-border-color: var(--lighter-purple);
+	--formosa-focus-box-shadow-color: var(--bright-purple);
+
+	/* Labels. */
+	--formosa-label-font-weight: normal;
+
+	/* Postfix. */
+	--formosa-postfix-border-width: 1px;
+
+	/* Radio buttons. */
+	--formosa-radio-border-radius: var(--border-radius);
+	--formosa-radio-border-width: 0;
+	--formosa-radio-margin: 0;
+	--formosa-radio-margin-side: 0;
+
+	/* Spinner. */
+	--formosa-spinner-color: var(--green);
+	--formosa-spinner-color-alternate: var(--darker-purple);
+
+	/* Success. */
+	--formosa-success-background-color: var(--green);
+}

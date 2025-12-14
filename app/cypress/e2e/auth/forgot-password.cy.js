@@ -36,108 +36,109 @@ describe('forgot password', () => {
 				.should('equal', 'If there is an account with this email address, you will receive a password reset email shortly.');
 
 			// Reset password.
-			cy.visit(Cypress.env('mail_url'));
-			cy.contains(`[${Cypress.env('site_name')}] Reset Password`).click();
-			cy.get('#nav-plain-text-tab').click();
-			cy.get('[href*="/reset-password"]')
-				.then(($a) => {
-					// With mismatched confirmation.
-					const newPassword = 'password2';
-					cy.visit($a.attr('href'));
-					cy.get('[name="email"]').clear().type(Cypress.env('default_email'));
-					cy.get('[name="new_password"]').clear().type(`${newPassword}1`);
-					cy.get('[name="new_password_confirmation"]').clear().type(`${newPassword}2`);
-					cy.get('[type="submit"]').click();
-					cy.wait('@resetPassword').its('response.statusCode').should('equal', 422);
-					cy.get('.formosa-alert--error').invoke('text')
-						.should('equal', 'Error: The new password confirmation does not match.');
+			cy.origin(Cypress.env('mail_url'), () => {
+				cy.visit(Cypress.env('mail_url'));
+				cy.contains(`[${Cypress.env('site_name')}] Reset Password`).click();
+				cy.get('#nav-plain-text-tab').click();
+				cy.get('[href*="/reset-password"]').invoke('attr', 'href');
+			}).then((resetPasswordUrl) => {
+				// With mismatched confirmation.
+				const newPassword = 'password2';
+				cy.visit(resetPasswordUrl);
+				cy.get('[name="email"]').clear().type(Cypress.env('default_email'));
+				cy.get('[name="new_password"]').clear().type(`${newPassword}1`);
+				cy.get('[name="new_password_confirmation"]').clear().type(`${newPassword}2`);
+				cy.get('[type="submit"]').click();
+				cy.wait('@resetPassword').its('response.statusCode').should('equal', 422);
+				cy.get('.formosa-alert--error').invoke('text')
+					.should('equal', 'Error: The new password confirmation does not match.');
 
-					// With short password.
-					cy.visit($a.attr('href'));
-					cy.get('[name="email"]').clear().type(Cypress.env('default_email'));
-					cy.get('[name="new_password"]').clear().type('a');
-					cy.get('[name="new_password_confirmation"]').clear().type('a');
-					cy.get('[type="submit"]').click();
-					cy.wait('@resetPassword').its('response.statusCode').should('equal', 422);
-					cy.get('.formosa-alert--error').invoke('text')
-						.should('equal', 'Error: The new password must be at least 8 characters.');
+				// With short password.
+				cy.visit(resetPasswordUrl);
+				cy.get('[name="email"]').clear().type(Cypress.env('default_email'));
+				cy.get('[name="new_password"]').clear().type('a');
+				cy.get('[name="new_password_confirmation"]').clear().type('a');
+				cy.get('[type="submit"]').click();
+				cy.wait('@resetPassword').its('response.statusCode').should('equal', 422);
+				cy.get('.formosa-alert--error').invoke('text')
+					.should('equal', 'Error: The new password must be at least 8 characters.');
 
-					// With invalid token.
-					cy.visit($a.attr('href').replace('?', 'a?'));
-					cy.get('[name="email"]').clear().type(Cypress.env('default_email'));
-					cy.get('[name="new_password"]').clear().type(`${newPassword}3`);
-					cy.get('[name="new_password_confirmation"]').clear().type(`${newPassword}3`);
-					cy.get('[type="submit"]').click();
-					cy.wait('@resetPassword').its('response.statusCode').should('equal', 403);
-					cy.get('.formosa-alert--error').invoke('text')
-						.should('equal', 'Error: This password reset link is invalid or the email is incorrect.');
+				// With invalid token.
+				cy.visit(resetPasswordUrl.replace('?', 'a?'));
+				cy.get('[name="email"]').clear().type(Cypress.env('default_email'));
+				cy.get('[name="new_password"]').clear().type(`${newPassword}3`);
+				cy.get('[name="new_password_confirmation"]').clear().type(`${newPassword}3`);
+				cy.get('[type="submit"]').click();
+				cy.wait('@resetPassword').its('response.statusCode').should('equal', 403);
+				cy.get('.formosa-alert--error').invoke('text')
+					.should('equal', 'Error: This password reset link is invalid or the email is incorrect.');
 
-					// With invalid signature.
-					cy.visit($a.attr('href').replace('signature=', 'signature=a'));
-					cy.get('[name="email"]').clear().type(Cypress.env('default_email'));
-					cy.get('[name="new_password"]').clear().type(`${newPassword}4`);
-					cy.get('[name="new_password_confirmation"]').clear().type(`${newPassword}4`);
-					cy.get('[type="submit"]').click();
-					cy.wait('@resetPassword').its('response.statusCode').should('equal', 403);
-					cy.get('.formosa-alert--error').invoke('text')
-						.should('equal', 'Error: This password reset link is invalid or the email is incorrect.');
+				// With invalid signature.
+				cy.visit(resetPasswordUrl.replace('signature=', 'signature=a'));
+				cy.get('[name="email"]').clear().type(Cypress.env('default_email'));
+				cy.get('[name="new_password"]').clear().type(`${newPassword}4`);
+				cy.get('[name="new_password_confirmation"]').clear().type(`${newPassword}4`);
+				cy.get('[type="submit"]').click();
+				cy.wait('@resetPassword').its('response.statusCode').should('equal', 403);
+				cy.get('.formosa-alert--error').invoke('text')
+					.should('equal', 'Error: This password reset link is invalid or the email is incorrect.');
 
-					// With wrong email.
-					cy.visit($a.attr('href'));
-					cy.get('[name="email"]').type('wrongemail@example.com');
-					cy.get('[name="new_password"]').clear().type(`${newPassword}5`);
-					cy.get('[name="new_password_confirmation"]').clear().type(`${newPassword}5`);
-					cy.get('[type="submit"]').click();
-					cy.wait('@resetPassword').its('response.statusCode').should('equal', 403);
-					cy.get('.formosa-alert--error').invoke('text')
-						.should('equal', 'Error: This password reset link is invalid or the email is incorrect.');
+				// With wrong email.
+				cy.visit(resetPasswordUrl);
+				cy.get('[name="email"]').type('wrongemail@example.com');
+				cy.get('[name="new_password"]').clear().type(`${newPassword}5`);
+				cy.get('[name="new_password_confirmation"]').clear().type(`${newPassword}5`);
+				cy.get('[type="submit"]').click();
+				cy.wait('@resetPassword').its('response.statusCode').should('equal', 403);
+				cy.get('.formosa-alert--error').invoke('text')
+					.should('equal', 'Error: This password reset link is invalid or the email is incorrect.');
 
-					// With valid submission.
-					cy.get('[name="email"]').clear().type(Cypress.env('default_email'));
-					cy.get('[name="new_password"]').clear().type(newPassword);
-					cy.get('[name="new_password_confirmation"]').clear().type(newPassword);
-					cy.get('[type="submit"]').click();
-					cy.wait('@resetPassword').its('response.statusCode').should('equal', 204);
-					cy.closeToast('Password reset successfully.');
-					cy.location('pathname').should('eq', Cypress.env('public_path'));
+				// With valid submission.
+				cy.get('[name="email"]').clear().type(Cypress.env('default_email'));
+				cy.get('[name="new_password"]').clear().type(newPassword);
+				cy.get('[name="new_password_confirmation"]').clear().type(newPassword);
+				cy.get('[type="submit"]').click();
+				cy.wait('@resetPassword').its('response.statusCode').should('equal', 204);
+				cy.closeToast('Password reset successfully.');
+				cy.location('pathname').should('eq', Cypress.env('public_path'));
 
-					// With same link twice.
-					cy.visit($a.attr('href'));
-					cy.get('[name="email"]').clear().type(Cypress.env('default_email'));
-					cy.get('[name="new_password"]').type(`${newPassword}6`);
-					cy.get('[name="new_password_confirmation"]').type(`${newPassword}6`);
-					cy.get('[type="submit"]').click();
-					cy.wait('@resetPassword').its('response.statusCode').should('equal', 403);
-					cy.get('.formosa-alert--error').invoke('text')
-						.should('equal', 'Error: This password reset link is invalid or the email is incorrect.');
+				// With same link twice.
+				cy.visit(resetPasswordUrl);
+				cy.get('[name="email"]').clear().type(Cypress.env('default_email'));
+				cy.get('[name="new_password"]').type(`${newPassword}6`);
+				cy.get('[name="new_password_confirmation"]').type(`${newPassword}6`);
+				cy.get('[type="submit"]').click();
+				cy.wait('@resetPassword').its('response.statusCode').should('equal', 403);
+				cy.get('.formosa-alert--error').invoke('text')
+					.should('equal', 'Error: This password reset link is invalid or the email is incorrect.');
 
-					// Login with old password.
-					cy.visit('/');
-					cy.get('[name="username"]').type(Cypress.env('default_username'));
-					cy.get('[name="password"]').type(Cypress.env('default_password'));
-					cy.get('[type="submit"]').click();
-					cy.wait('@login').its('response.statusCode').should('equal', 401);
-					cy.get('.formosa-alert--error').invoke('text').should('equal', 'Error: Username or password is incorrect.');
+				// Login with old password.
+				cy.visit('/');
+				cy.get('[name="username"]').type(Cypress.env('default_username'));
+				cy.get('[name="password"]').type(Cypress.env('default_password'));
+				cy.get('[type="submit"]').click();
+				cy.wait('@login').its('response.statusCode').should('equal', 401);
+				cy.get('.formosa-alert--error').invoke('text').should('equal', 'Error: Username or password is incorrect.');
 
-					// Login with new password.
-					cy.get('[name="password"]').clear().type(newPassword);
-					cy.get('[type="submit"]').click();
-					cy.wait('@login').its('response.statusCode').should('equal', 200);
-					cy.location('pathname').should('eq', Cypress.env('public_path'));
+				// Login with new password.
+				cy.get('[name="password"]').clear().type(newPassword);
+				cy.get('[type="submit"]').click();
+				cy.wait('@login').its('response.statusCode').should('equal', 200);
+				cy.location('pathname').should('eq', Cypress.env('public_path'));
 
-					// Change password back.
-					cy.visit('/profile');
-					cy.wait('@getUser').its('response.statusCode').should('equal', 200);
-					cy.get('#current-password-password').clear().type(newPassword);
-					cy.get('#new_password').clear().type(Cypress.env('default_password'));
-					cy.get('#new_password_confirmation').clear().type(Cypress.env('default_password'));
-					cy.get('button').contains('Change password').click();
-					cy.wait('@changePassword').its('response.statusCode').should('equal', 204);
-					cy.closeToast('Password changed successfully.');
+				// Change password back.
+				cy.visit('/profile');
+				cy.wait('@getUser').its('response.statusCode').should('equal', 200);
+				cy.get('#current-password-password').clear().type(newPassword);
+				cy.get('#new_password').clear().type(Cypress.env('default_password'));
+				cy.get('#new_password_confirmation').clear().type(Cypress.env('default_password'));
+				cy.get('button').contains('Change password').click();
+				cy.wait('@changePassword').its('response.statusCode').should('equal', 204);
+				cy.closeToast('Password changed successfully.');
 
-					// TODO: With expired token on page load.
-					// TODO: With expired token on submit.
-				});
+				// TODO: With expired token on page load.
+				// TODO: With expired token on submit.
+			});
 		});
 	});
 

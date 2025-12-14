@@ -1,0 +1,133 @@
+button,
+.button,
+.formosa-input-wrapper--radio .formosa-radio__label {
+	background-color: --gradient(var(--lighter-green), var(--green), var(--dark-green));
+	cursor: pointer;
+	font-weight: bold;
+	text-shadow: 0 1px 0 var(--lighter-green);
+	text-transform: uppercase;
+	white-space: nowrap;
+
+	&:hover {
+		background-color: --gradient(var(--lighter-green), var(--light-green), var(--dark-green));
+	}
+
+	&:active,
+	&:focus {
+		background-color: --gradient(var(--dark-green), var(--darkish-green), var(--green));
+		border-color: var(--darker-green);
+		text-shadow: 0 -1px 0 var(--light-green);
+	}
+
+	&.button--secondary,
+	&.formosa-button--toggle-password {
+		background-color: --gradient(var(--lighter-purple), var(--light-purple), var(--dark-purple));
+		border-color: var(--purple);
+		color: var(--white);
+		text-shadow: 0 1px 0 var(--darkest-purple);
+
+		&:hover {
+			background-color: --gradient(var(--lighter-purple), var(--lighter-purple), var(--dark-purple));
+		}
+
+		&:active,
+		&:focus {
+			background-color: --gradient(var(--purple), var(--lightish-purple), var(--lighter-purple));
+			border-color: var(--dark-purple);
+			text-shadow: 0 -1px 0 var(--darkest-purple);
+		}
+	}
+
+	&.button--danger,
+	&.formosa-button--danger {
+		background-color: --gradient(var(--lighter-red), var(--red), var(--dark-red));
+		border-color: var(--dark-red);
+		color: var(--white);
+		text-shadow: 0 1px 0 var(--darker-red);
+
+		&:hover {
+			background-color: --gradient(var(--lighter-red), var(--light-red), var(--dark-red));
+		}
+
+		&:active,
+		&:focus {
+			background-color: --gradient(var(--darkish-red), var(--red), var(--lightish-red));
+			border-color: var(--darker-red);
+			text-shadow: 0 -1px 0 var(--darker-red);
+		}
+	}
+
+	&[disabled] {
+		background-color: --gradient(#999, #666, #333);
+		border-color: #666;
+		color: var(--white);
+		pointer-events: none;
+		text-shadow: 0 1px 0 #000;
+	}
+}
+
+.formosa-button {
+	font-weight: bold;
+}
+
+.formosa-input-wrapper--radio {
+	.formosa-radio__label {
+		&:focus-within {
+			background-color: --gradient(var(--dark-green), var(--darkish-green), var(--green));
+			border-color: var(--darker-green);
+			text-shadow: 0 -1px 0 var(--light-green);
+		}
+	}
+
+	.formosa-radio__label--checked {
+		background-color: --gradient(var(--darkest-green), var(--darker-green), var(--darker-green));
+		color: var(--white);
+		text-shadow: 0 -1px 0 var(--darkest-green);
+
+		&.formosa-radio__label {
+			color: var(--white);
+		}
+
+		&:hover {
+			background-color: --gradient(var(--darkest-green), var(--darker-green), var(--darker-green));
+		}
+
+		&:active,
+		&:focus,
+		&:focus-within {
+			background-color: --gradient(var(--darkest-green), var(--darker-green), var(--darker-green));
+			border-color: var(--dark-green);
+			text-shadow: 0 -1px 0 var(--dark-green);
+		}
+	}
+}
+
+.button--link {
+	background-color: transparent;
+	border-color: transparent;
+	color: var(--green);
+	display: inline-block;
+	font-weight: normal;
+	white-space: nowrap;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: transparent;
+	}
+}
+
+button.formosa-button.button--link {
+	background: transparent;
+	text-decoration: underline;
+	text-shadow: none;
+	text-transform: none;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background: transparent;
+		border-color: transparent;
+		text-decoration: none;
+	}
+}

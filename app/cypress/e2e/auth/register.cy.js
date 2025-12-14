@@ -56,6 +56,7 @@ describe('register', () => {
 			cy.intercept('POST', '**/api/auth/login').as('login');
 			cy.intercept('GET', '**/api/users/*').as('getUser');
 			cy.intercept('DELETE', '**/api/users/*').as('deleteUser');
+			cy.intercept('GET', '**/api/action-types?*').as('getActionTypes');
 
 			// Register.
 			const username = `foo${Date.now()}`;
@@ -91,6 +92,7 @@ describe('register', () => {
 					cy.get('[name="password"]').type(Cypress.env('default_password'));
 					cy.get('[type="submit"]').click();
 					cy.wait('@login').its('response.statusCode').should('equal', 200);
+					cy.wait('@getActionTypes').its('response.statusCode').should('equal', 200);
 					cy.location('pathname').should('eq', '/event-types/new');
 
 					// Delete.

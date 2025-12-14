@@ -1,0 +1,4 @@
+p {
+	color: var(--white);
+	padding: 0 var(--list-padding-side);
+}
