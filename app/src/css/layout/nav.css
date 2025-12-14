@@ -6,7 +6,8 @@
 
 .nav__button,
 .nav__link {
-	background-color: --gradient(var(--light-purple), var(--dark-purple), var(--black));
+	@mixin gradient var(--light-purple), var(--dark-purple), var(--black);
+
 	color: var(--white);
 	height: var(--nav-height);
 	text-shadow: 0 2px 0 var(--black);
@@ -20,7 +21,7 @@
 	text-decoration: none;
 
 	&:hover {
-		background-color: --gradient(var(--light-purple), var(--purple), var(--black));
+		@mixin gradient var(--light-purple), var(--purple), var(--black);
 	}
 
 	& + .nav__link {

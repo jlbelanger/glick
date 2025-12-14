@@ -1,7 +1,7 @@
 input,
 select,
 textarea {
-	background-color: --gradient(#fff, #fff, #ccc);
+	@mixin gradient var(--white), var(--white), var(--lightest-gray);
 
 	&:invalid:not(:focus) {
 		box-shadow: none;

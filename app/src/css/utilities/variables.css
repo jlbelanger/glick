@@ -1,35 +1,39 @@
 :root {
 	/* Colors - greens. */
 	--dark-green: #096;
-	--darkish-green: #2eb88a; /* color.scale(var(--green), var(--lightness): -10%); */
-	--darker-green: #006b47; /* color.scale(var(--dark-green), var(--lightness): -30%); */
-	--darkest-green: #004b32; /* color.scale(var(--darker-green), var(--lightness): -30%); */
+	--darker-green: hsl(from var(--dark-green) h s calc(l * .7));
+	--darkest-green: hsl(from var(--dark-green) h s calc(l * .5));
 	--green: #3c9;
+	--darkish-green: hsl(from var(--green) h s calc(l * .9));
 	--light-green: #4da;
 	--lighter-green: #6fc;
 	--lightest-green: #8fe;
 
 	/* Colors - purples. */
-	--darkest-purple: #101;
 	--purple: #4b318c;
-	--darker-purple: #261946; /* color.scale(var(--purple), var(--lightness): -50%); */
-	--dark-purple: #31205b; /* color.scale(var(--purple), var(--lightness): -35%); */
-	--lightish-purple: #4d3390; /* color.scale(var(--light-purple), var(--lightness): -5%); */
-	--light-purple: #513598; /* color.scale(var(--purple), var(--lightness): 5%); */
-	--lighter-purple: #6442bc; /* color.scale(var(--purple), var(--lightness): 20%); */
+	--darkest-purple: hsl(from var(--purple) h s calc(l * .225));
+	--darker-purple: hsl(from var(--purple) h s calc(l * .51));
+	--dark-purple: hsl(from var(--purple) h s calc(l * .65));
+	--lightish-purple: hsl(from var(--purple) h s calc(l * 1.03));
+	--light-purple: hsl(from var(--purple) h s calc(l * 1.09));
+	--lighter-purple: hsl(from var(--purple) h s calc(l * 1.34));
 	--bright-purple: #b656b6;
 
 	/* Colors - reds. */
 	--red: #cc411f;
-	--darkish-red: #de4823; /* color.scale(var(--red), var(--lightness): -15%); */
-	--darker-red: #662110; /* color.scale(var(--red), var(--lightness): -50%); */
-	--dark-red: #852a14; /* color.scale(var(--red), var(--lightness): -35%); */
-	--light-red: #d84521; /* color.scale(var(--red), var(--lightness): 5%); */
-	--lighter-red: #e26040; /* color.scale(var(--red), var(--lightness): 20%); */
-	--lightish-red: #ad371a; /* color.scale(var(--light-red), var(--lightness): 3%); */
+	--darkest-red: hsl(from var(--red) h s calc(l * .5));
+	--darker-red: hsl(from var(--red) h s calc(l * .65));
+	--dark-red: hsl(from var(--red) h s calc(l * .85));
+	--light-red: hsl(from var(--red) h s calc(l * 1.06));
+	--lighter-red: hsl(from var(--red) h s calc(l * 1.095));
+	--lightest-red: hsl(from var(--red) h s calc(l * 1.235));
 
 	/* Colors - grays. */
 	--white: #fff;
+	--lightest-gray: #ccc;
+	--light-gray: #999;
+	--gray: #666;
+	--dark-gray: #333;
 	--black: #000;
 
 	/* Sizes. */
@@ -79,7 +83,7 @@
 	--formosa-checkbox-border-radius: var(--border-radius);
 
 	/* Colors. */
-	--formosa-color-danger: var(--lighter-red);
+	--formosa-color-danger: var(--lightest-red);
 
 	/* Focus. */
 	--formosa-focus-border-color: var(--lighter-purple);

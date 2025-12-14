@@ -1,3 +1,4 @@
-@function --gradient(--top, --main, --bottom) {
-	result: linear-gradient(0deg, var(--bottom) 5%, var(--main) 5%, var(--main) 95%, var(--top) 95%);
+@define-mixin gradient $top, $main, $bottom {
+	background: $main;
+	background: linear-gradient(0deg, $bottom 5%, $main 5%, $main 95%, $top 95%);
 }

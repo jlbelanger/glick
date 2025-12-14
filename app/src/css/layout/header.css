@@ -28,7 +28,8 @@
 		&:hover,
 		&:active,
 		&:focus {
-			background-color: --gradient(var(--light-purple), var(--purple), var(--black));
+			@mixin gradient var(--light-purple), var(--purple), var(--black);
+
 			text-shadow: 0 2px 0 var(--black);
 		}
 	}
