@@ -1,4 +1,4 @@
-import { getWeek } from './Datetime';
+import { getWeek } from './Datetime.js';
 
 describe('getWeek', () => {
 	const items = [
@@ -13,7 +13,7 @@ describe('getWeek', () => {
 		{ date: '2023-01-09T08:00:00Z', expected: '2023-w02' },
 	];
 	items.forEach((item) => {
-		it(`returns correct week for ${item.date}`, async () => {
+		it(`returns correct week for ${item.date}`, () => {
 			expect(getWeek(new Date(item.date))).toEqual(item.expected);
 		});
 	});

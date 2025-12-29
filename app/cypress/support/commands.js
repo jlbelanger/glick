@@ -17,7 +17,7 @@ Cypress.Commands.add('closeToast', (message) => {
 	cy.get('.formosa-toast__close').click();
 });
 
-export const mockServerError = (method, url) => ( // eslint-disable-line import/prefer-default-export
+export const mockServerError = (method, url) => (
 	cy.intercept(
 		method,
 		url,

@@ -1,0 +1,27 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: var(--black);
+	color: var(--white);
+	font-family: var(--formosa-input-font-family);
+	font-size: var(--font-size);
+	margin: 0;
+}
+
+#main {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+#header,
+#footer {
+	background: var(--darker-purple);
+	height: var(--nav-height);
+	left: 0;
+	position: fixed;
+	right: 0;
+	z-index: 9997;
+}

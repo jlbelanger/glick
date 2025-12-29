@@ -1,0 +1,10 @@
+small {
+	color: var(--white);
+	display: inline-block;
+	margin: 8px 8px 8px 0;
+	opacity: .5;
+}
+
+label + small {
+	margin-left: 8px;
+}

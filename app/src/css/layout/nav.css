@@ -1,0 +1,40 @@
+#nav {
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+}
+
+.nav__button,
+.nav__link {
+	@mixin gradient var(--light-purple), var(--dark-purple), var(--black);
+
+	color: var(--white);
+	height: var(--nav-height);
+	text-shadow: 0 2px 0 var(--black);
+}
+
+.nav__link {
+	align-items: center;
+	display: flex;
+	flex: 1 1 auto;
+	justify-content: center;
+	text-decoration: none;
+
+	&:hover {
+		@mixin gradient var(--light-purple), var(--purple), var(--black);
+	}
+
+	& + .nav__link {
+		margin-left: 2px;
+	}
+}
+
+.nav__link.active {
+	background: var(--darkest-purple);
+
+	&:hover,
+	&:active,
+	&:focus {
+		background: var(--black);
+	}
+}

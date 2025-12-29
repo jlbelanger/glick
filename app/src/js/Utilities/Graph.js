@@ -98,7 +98,7 @@ export const barGraphData = (actions, unit) => {
 			dateObject.setHours(0);
 		}
 		const ymdhmsz = dateObject.toISOString();
-		if (Object.prototype.hasOwnProperty.call(data, ymdhmsz)) {
+		if (Object.hasOwn(data, ymdhmsz)) {
 			data[ymdhmsz] += 1;
 		} else {
 			data[ymdhmsz] = 1;
@@ -127,17 +127,17 @@ export const lineGraphData = (actionType, actions) => {
 		datasets: [],
 	};
 	const colors = [
-		'#3c9', // green
-		'#3f51b5', // blue
-		'#f44336', // red
-		'#ff9800', // orange
-		'#9c27b0', // purple
-		'#03a9f4', // cyan
-		'#f06292', // pink
-		'#ffeb3b', // yellow
-		'#8bc34a', // lime
-		'#00bcd4', // teal
-		'#673ab7', // purple
+		'#3c9', // Green.
+		'#3f51b5', // Blue.
+		'#f44336', // Red.
+		'#ff9800', // Orange.
+		'#9c27b0', // Purple.
+		'#03a9f4', // Cyan.
+		'#f06292', // Pink.
+		'#ffeb3b', // Yellow.
+		'#8bc34a', // Lime.
+		'#00bcd4', // Teal.
+		'#673ab7', // Purple.
 	];
 
 	const points = [];

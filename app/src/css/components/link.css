@@ -1,0 +1,9 @@
+a {
+	color: var(--green);
+
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: none;
+	}
+}

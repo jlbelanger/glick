@@ -1,0 +1,13 @@
+.formosa-toast-container {
+	bottom: var(--nav-height);
+}
+
+.formosa-toast__close {
+	background: transparent;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background: transparent;
+	}
+}
