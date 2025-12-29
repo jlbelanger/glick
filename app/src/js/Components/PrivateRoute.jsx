@@ -1,6 +1,5 @@
 import { Navigate, Outlet } from 'react-router';
-import Auth from '../Utilities/Auth';
-import React from 'react';
+import Auth from '../Utilities/Auth.js';
 
 export default function PrivateRoute() {
 	if (Auth.isLoggedIn()) {
@@ -9,6 +8,6 @@ export default function PrivateRoute() {
 		);
 	}
 	return (
-		<Navigate to={`/?redirect=${encodeURIComponent(`${window.location.pathname}${window.location.search}`)}`} replace />
+		<Navigate replace to={`/?redirect=${encodeURIComponent(`${window.location.pathname}${window.location.search}`)}`} />
 	);
 }

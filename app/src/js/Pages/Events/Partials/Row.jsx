@@ -1,8 +1,7 @@
-import { prettyDate, prettyTime } from '../../../Utilities/Datetime';
-import { getEventLabel } from '../../../Utilities/Helpers';
+import { prettyDate, prettyTime } from '../../../Utilities/Datetime.js';
+import { getEventLabel } from '../../../Utilities/Helpers.js';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 export default function Row({ rows, ymd }) {
 	return (

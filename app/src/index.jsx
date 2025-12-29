@@ -1,19 +1,19 @@
 import 'normalize.css/normalize.css';
 import '@jlbelanger/formosa/dist/formosa.css';
 import './css/style.css';
+import { createRoot } from 'react-dom/client';
 import { FormosaConfig } from '@jlbelanger/formosa';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router';
-import Routes from './js/Routes';
+import Routes from './js/Routes.jsx';
+import { StrictMode } from 'react';
 
 FormosaConfig.init({
 	apiPrefix: import.meta.env.VITE_API_URL,
 });
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = createRoot(document.getElementById('root'));
 root.render(
-	<React.StrictMode>
+	<StrictMode>
 		<RouterProvider router={Routes} />
-	</React.StrictMode>
+	</StrictMode>
 );

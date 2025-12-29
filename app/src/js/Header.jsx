@@ -1,9 +1,9 @@
 import { Api, FormosaContext } from '@jlbelanger/formosa';
 import { NavLink, useLocation } from 'react-router';
-import React, { useContext } from 'react';
-import Auth from './Utilities/Auth';
-import { errorMessageText } from './Utilities/Helpers';
+import Auth from './Utilities/Auth.js';
+import { errorMessageText } from './Utilities/Helpers.js';
 import Logo from '../svg/logo.svg?react'; // eslint-disable-line import/no-unresolved
+import { useContext } from 'react';
 
 export default function Header() {
 	const { addToast } = useContext(FormosaContext);
@@ -28,7 +28,7 @@ export default function Header() {
 				{Auth.isLoggedIn() && (
 					<NavLink className="nav__link" data-cy="profile" to="/profile">Profile</NavLink>
 				)}
-				<div id="logo"><Logo height="28" fill="#fff" title={import.meta.env.VITE_TITLE} /></div>
+				<div id="logo"><Logo fill="#fff" height="28" title={import.meta.env.VITE_TITLE} /></div>
 				{Auth.isLoggedIn() && (
 					<button className="nav__button" data-cy="logout" disabled={location.pathname !== '/profile'} onClick={logout} type="button">
 						Logout

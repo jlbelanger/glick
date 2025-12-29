@@ -1,12 +1,12 @@
 import { Alert, Api, FormosaContext, Submit } from '@jlbelanger/formosa';
 import { Link, useNavigate, useParams } from 'react-router';
-import React, { useContext, useEffect, useState } from 'react';
-import Error from '../../Error';
-import { errorMessageText } from '../../Utilities/Helpers';
-import Fields from './Partials/Fields';
-import MetaTitle from '../../Components/MetaTitle';
-import Modal from '../../Components/Modal';
-import MyForm from '../../Components/MyForm';
+import { useContext, useEffect, useState } from 'react';
+import Error from '../../Error.jsx';
+import { errorMessageText } from '../../Utilities/Helpers.js';
+import Fields from './Partials/Fields.jsx';
+import MetaTitle from '../../Components/MetaTitle.jsx';
+import Modal from '../../Components/Modal.jsx';
+import MyForm from '../../Components/MyForm.jsx';
 
 export default function Edit() {
 	const api = Api.instance();
@@ -98,8 +98,10 @@ export default function Edit() {
 					event={showModal}
 					okButtonClass="formosa-button--danger"
 					okButtonText="Delete"
+					onClickCancel={() => {
+						setShowModal(false);
+					}}
 					onClickOk={deleteRow}
-					onClickCancel={() => { setShowModal(false); }}
 					text="Are you sure you want to delete this event type?"
 				/>
 			)}

@@ -1,4 +1,4 @@
-import { mockServerError } from '../support/commands';
+import { mockServerError } from '../support/commands.js';
 
 describe('profile', () => {
 	beforeEach(() => {

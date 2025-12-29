@@ -1,15 +1,15 @@
 import { Field, FormAlert, Submit } from '@jlbelanger/formosa';
-import React, { useState } from 'react';
-import { errorMessageText } from '../../../Utilities/Helpers';
-import MyForm from '../../../Components/MyForm';
+import { errorMessageText } from '../../../Utilities/Helpers.js';
+import MyForm from '../../../Components/MyForm.jsx';
+import { useState } from 'react';
 
 export default function ChangePassword() {
 	const [row, setRow] = useState({});
 
 	return (
 		<MyForm
-			errorMessageText={errorMessageText}
 			clearOnSubmit
+			errorMessageText={errorMessageText}
 			method="PUT"
 			path="auth/change-password"
 			preventEmptyRequest

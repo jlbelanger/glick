@@ -1,4 +1,4 @@
-import './commands';
+import './commands.js';
 
 Cypress.Commands.add('login', (username = '', password = '') => {
 	username = username || Cypress.env('default_username');
@@ -40,21 +40,22 @@ Cypress.Commands.add('register', (username = '', password = '') => {
 					.should('equal', `Check your email (${email}) to continue the registration process.`);
 
 				// Verify email.
-				cy.visit(Cypress.env('mail_url'));
-				cy.contains(`[${Cypress.env('site_name')}] Verify Email Address`).click();
-				cy.get('#nav-plain-text-tab').click();
-				cy.get('[href*="/verify-email"]')
-					.then(($a) => {
-						cy.visit($a.attr('href'));
-						cy.get('[data-cy="verify"]').click();
-						cy.closeToast('Email verified successfully.');
+				cy.origin(Cypress.env('mail_url'), () => {
+					cy.visit(Cypress.env('mail_url'));
+					cy.contains(`[${Cypress.env('site_name')}] Verify Email Address`).click();
+					cy.get('#nav-plain-text-tab').click();
+					cy.get('[href*="/verify-email"]').invoke('attr', 'href');
+				}).then((verifyEmailUrl) => {
+					cy.visit(verifyEmailUrl);
+					cy.get('[data-cy="verify"]').click();
+					cy.closeToast('Email verified successfully.');
 
-						// Login.
-						cy.get('[name="username"]').type(username);
-						cy.get('[name="password"]').type(Cypress.env('default_password'));
-						cy.get('[type="submit"]').click();
-						cy.wait('@login').its('response.statusCode').should('equal', 200);
-					});
+					// Login.
+					cy.get('[name="username"]').type(username);
+					cy.get('[name="password"]').type(Cypress.env('default_password'));
+					cy.get('[type="submit"]').click();
+					cy.wait('@login').its('response.statusCode').should('equal', 200);
+				});
 			}
 		});
 });

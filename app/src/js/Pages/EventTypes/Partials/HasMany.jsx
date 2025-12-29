@@ -1,5 +1,5 @@
 import { FormContext, Input } from '@jlbelanger/formosa';
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 
 export default function HasMany() {
 	const { formState } = useContext(FormContext);
@@ -63,7 +63,7 @@ export default function HasMany() {
 						const isRemovable = !value.has_events || value.id.startsWith('temp-');
 						const rowKey = `included.${value.type}.${value.id}`;
 						const fieldKey = `${rowKey}.label`;
-						const hasError = Object.prototype.hasOwnProperty.call(formState.errors, fieldKey);
+						const hasError = Object.hasOwn(formState.errors, fieldKey);
 						const className = ['formosa-has-many__column'];
 						if (hasError) {
 							className.push('formosa-field--has-error');

@@ -1,7 +1,6 @@
-import { isToday, prettyDatetime, prettyTime } from '../../../Utilities/Datetime';
+import { isToday, prettyDatetime, prettyTime } from '../../../Utilities/Datetime.js';
 import { Label } from '@jlbelanger/formosa';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 export default function NewLabel({ actionType }) {
 	let prettyStartDate = null;
@@ -14,7 +13,7 @@ export default function NewLabel({ actionType }) {
 	}
 	return (
 		<Label
-			htmlFor={actionType.field_type !== 'button' ? actionType.slug : null}
+			htmlFor={actionType.field_type === 'button' ? null : actionType.slug}
 			label={actionType.label}
 			note={prettyStartDate ? `since ${prettyStartDate}` : ''}
 		/>

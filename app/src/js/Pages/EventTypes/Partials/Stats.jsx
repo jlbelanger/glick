@@ -1,8 +1,7 @@
-import { getWeek, getYmdhmsFromDateObject } from '../../../Utilities/Datetime';
+import { getWeek, getYmdhmsFromDateObject } from '../../../Utilities/Datetime.js';
 import { Field } from '@jlbelanger/formosa';
-import { getChartTooltipFormat } from '../../../Utilities/Graph';
+import { getChartTooltipFormat } from '../../../Utilities/Graph.js';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 const getPeriod = (dateObject, range) => {
 	const ymdhms = getYmdhmsFromDateObject(dateObject);
@@ -61,7 +60,7 @@ const createPeriodGroups = (minDateObject, maxDateObject, range) => {
 	const output = {};
 	output[getPeriod(minDateObject, range)] = [];
 
-	while (minDateObject < maxDateObject) {
+	while (minDateObject < maxDateObject) { // eslint-disable-line no-unmodified-loop-condition
 		if (range === 'year') {
 			minDateObject.setFullYear(minDateObject.getFullYear() + 1);
 		} else if (range === 'month') {
@@ -148,7 +147,7 @@ export default function Stats({ actions, chartRef, fromYmd, graphType, setUnit, 
 			if (/^[0-9./]+\/[0-9./]+$/.test(action.value)) {
 				values.push(parseFloat(action.value));
 				action.value.split('/').forEach((value, i) => {
-					if (!Object.prototype.hasOwnProperty.call(valuesSlash, i)) {
+					if (!Object.hasOwn(valuesSlash, i)) {
 						valuesSlash[i] = [];
 					}
 					valuesSlash[i].push(parseFloat(value));
@@ -165,7 +164,7 @@ export default function Stats({ actions, chartRef, fromYmd, graphType, setUnit, 
 			Object.values(valuesSlash).forEach((vals) => {
 				const res = calculate(vals);
 				Object.keys(res).forEach((key) => {
-					if (!Object.prototype.hasOwnProperty.call(slashResults, key)) {
+					if (!Object.hasOwn(slashResults, key)) {
 						slashResults[key] = [];
 					}
 					slashResults[key].push(res[key]);
@@ -203,9 +202,7 @@ export default function Stats({ actions, chartRef, fromYmd, graphType, setUnit, 
 				<Field
 					label="Per:"
 					name="unit"
-					type="radio"
 					options={['day', 'week', 'month', 'year']}
-					value={unit}
 					setValue={(v) => {
 						const chart = chartRef.current;
 						if (chart) {
@@ -215,6 +212,8 @@ export default function Stats({ actions, chartRef, fromYmd, graphType, setUnit, 
 
 						setUnit(v);
 					}}
+					type="radio"
+					value={unit}
 					wrapperClassName="unit"
 				/>
 			)}

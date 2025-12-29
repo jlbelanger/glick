@@ -1,8 +1,7 @@
 import { Alert } from '@jlbelanger/formosa';
-import Auth from './Utilities/Auth';
-import MetaTitle from './Components/MetaTitle';
+import Auth from './Utilities/Auth.js';
+import MetaTitle from './Components/MetaTitle.jsx';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 export default function Error({ error }) {
 	if (error.status === 401) {

@@ -1,7 +1,7 @@
 import { Api, Field, FormosaContext } from '@jlbelanger/formosa';
-import React, { useContext, useState } from 'react';
-import { errorMessageText } from '../../../Utilities/Helpers';
-import { getCurrentYmdhmsz } from '../../../Utilities/Datetime';
+import { useContext, useState } from 'react';
+import { errorMessageText } from '../../../Utilities/Helpers.js';
+import { getCurrentYmdhmsz } from '../../../Utilities/Datetime.js';
 import PropTypes from 'prop-types';
 
 export default function NewField({ actionType, inlineErrors, setInProgress, setInlineErrors }) {
@@ -60,10 +60,9 @@ export default function NewField({ actionType, inlineErrors, setInProgress, setI
 
 	return (
 		<Field
-			name={name}
 			labelKey="label"
+			name={name}
 			options={options}
-			type="radio"
 			setValue={(newValue) => {
 				setInlineErrors({ ...inlineErrors, [actionType.id]: false });
 
@@ -120,6 +119,7 @@ export default function NewField({ actionType, inlineErrors, setInProgress, setI
 						setInProgress(actionType.id, response);
 					});
 			}}
+			type="radio"
 			value={value}
 			valueKey={(option) => ({ id: option.id, type: option.type })}
 		/>

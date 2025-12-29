@@ -1,8 +1,8 @@
 import { Form, Submit } from '@jlbelanger/formosa';
-import React, { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
-import { errorMessageText } from '../../Utilities/Helpers';
-import MetaTitle from '../../Components/MetaTitle';
+import { errorMessageText } from '../../Utilities/Helpers.js';
+import MetaTitle from '../../Components/MetaTitle.jsx';
+import { useEffect } from 'react';
 
 export default function VerifyEmail() {
 	const navigate = useNavigate();

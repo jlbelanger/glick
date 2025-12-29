@@ -1,8 +1,8 @@
 import { Alert, Api, Field, FormContext } from '@jlbelanger/formosa';
-import React, { useContext } from 'react';
-import { errorMessageText } from '../../Utilities/Helpers';
+import { errorMessageText } from '../../Utilities/Helpers.js';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
 
 export default function LoginForm({
 	message = null,
@@ -47,7 +47,7 @@ export default function LoginForm({
 				</p>
 			)}
 
-			{/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+			{/* eslint-disable-next-line @stylistic/jsx-one-expression-per-line */}
 			<p>For a demo, use the username <b>demo</b> and the password <b>demo</b>.</p>
 
 			<Field

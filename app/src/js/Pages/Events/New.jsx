@@ -1,11 +1,11 @@
 import { Api, Form } from '@jlbelanger/formosa';
-import React, { useEffect, useState } from 'react';
-import Error from '../../Error';
-import { errorMessageText } from '../../Utilities/Helpers';
-import { getCurrentYmdhmsz } from '../../Utilities/Datetime';
-import MetaTitle from '../../Components/MetaTitle';
-import NewField from './Partials/NewField';
-import NewLabel from './Partials/NewLabel';
+import { useEffect, useState } from 'react';
+import Error from '../../Error.jsx';
+import { errorMessageText } from '../../Utilities/Helpers.js';
+import { getCurrentYmdhmsz } from '../../Utilities/Datetime.js';
+import MetaTitle from '../../Components/MetaTitle.jsx';
+import NewField from './Partials/NewField.jsx';
+import NewLabel from './Partials/NewLabel.jsx';
 import { useNavigate } from 'react-router';
 
 export default function New() {
@@ -63,7 +63,7 @@ export default function New() {
 
 		// Remove default Add/Start/Stop values.
 		let actionType;
-		if (Object.prototype.hasOwnProperty.call(values, 'action_type')) {
+		if (Object.hasOwn(values, 'action_type')) {
 			actionType = rows.find((row) => row.id === values.action_type.id);
 		} else {
 			actionType = rows.find((row) => row.in_progress.id === values.id);
@@ -122,7 +122,7 @@ export default function New() {
 
 	return (
 		<>
-			<MetaTitle title="Add event" hideTitleText />
+			<MetaTitle hideTitleText title="Add event" />
 
 			<ul className="list" id="list">
 				{sortedRows.map((actionType) => {
@@ -152,7 +152,10 @@ export default function New() {
 									setInlineErrors({ ...inlineErrors, [actionType.id]: errorMessageText(response) });
 								}}
 								afterSubmitSuccess={afterSubmitSuccess}
-								beforeSubmit={() => { setInlineErrors({ ...inlineErrors, [actionType.id]: false }); return true; }}
+								beforeSubmit={() => {
+									setInlineErrors({ ...inlineErrors, [actionType.id]: false });
+									return true;
+								}}
 								clearOnSubmit={actionType.field_type !== 'button' || !actionType.is_continuous}
 								defaultRow={defaultRow}
 								filterBody={hasStopOnly ? filterBodyStop : filterBody}
@@ -163,13 +166,13 @@ export default function New() {
 								path="actions"
 								relationshipNames={['action_type', 'option']}
 								row={actions[actionType.id]}
-								showInlineErrors={false}
 								setRow={(newRow) => {
 									setActions({
 										...actions,
 										[newRow.action_type.id]: newRow,
 									});
 								}}
+								showInlineErrors={false}
 								successToastText={hasStopOnly ? 'Event stopped successfully.' : 'Event added successfully.'}
 							>
 								<div className="field">
@@ -177,8 +180,8 @@ export default function New() {
 									<NewField
 										actionType={actionType}
 										inlineErrors={inlineErrors}
-										setInlineErrors={setInlineErrors}
 										setInProgress={setInProgress}
+										setInlineErrors={setInlineErrors}
 									/>
 								</div>
 								{inlineErrors[actionType.id] && <div className="formosa-field__error">{inlineErrors[actionType.id]}</div>}
@@ -191,10 +194,10 @@ export default function New() {
 									afterSubmitSuccess={afterSubmitSuccess}
 									className="hide"
 									filterBody={filterBodyStop}
+									id={actionType.in_progress.id.toString()}
 									method="PUT"
 									params="include=action_type"
 									path="actions"
-									id={actionType.in_progress.id.toString()}
 									successToastText="Event stopped successfully."
 								>
 									<button type="submit">Stop</button>

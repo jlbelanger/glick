@@ -13,18 +13,18 @@
 	],
 	"require": {
 		"php": "^8.4",
-		"guzzlehttp/guzzle": "^7.9.2",
-		"jlbelanger/tapioca": "dev-main#831c1b22159eccdfdefbdf369b3fb1d876ec88ed",
-		"laravel/framework": "^11.36.1",
-		"laravel/sanctum": "^4.0.7"
+		"guzzlehttp/guzzle": "^7.10.0",
+		"jlbelanger/tapioca": "dev-main#418b42ba451045227a450b51ec45e4da4dac0662",
+		"laravel/framework": "^12.43.1",
+		"laravel/sanctum": "^4.2.1"
 	},
 	"require-dev": {
 		"fakerphp/faker": "^1.24.1",
-		"filp/whoops": "^2.16.0",
+		"filp/whoops": "^2.18.4",
 		"mockery/mockery": "^1.6.12",
-		"nunomaduro/collision": "^8.5.0",
-		"phpunit/phpunit": "^11.5.2",
-		"squizlabs/php_codesniffer": "^3.11.2"
+		"nunomaduro/collision": "^8.8.3",
+		"phpunit/phpunit": "^12.5.4",
+		"squizlabs/php_codesniffer": "^4.0.1"
 	},
 	"autoload": {
 		"psr-4": {

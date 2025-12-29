@@ -1,5 +1,5 @@
 import 'luxon';
-import 'chartjs-adapter-luxon'; // eslint-disable-line import/no-unresolved
+import 'chartjs-adapter-luxon';
 import {
 	BarController,
 	BarElement,
@@ -11,17 +11,17 @@ import {
 	TimeScale,
 	Tooltip,
 } from 'chart.js';
-import { barGraphData, getChartTooltipFormat, getDefaultChartUnit, getGraphType, lineGraphData } from '../../Utilities/Graph';
-import { getLocalDateObject, getRowsByYmd, getYmdFromDateObject, getYmdhmsFromDateObject } from '../../Utilities/Datetime';
+import { barGraphData, getChartTooltipFormat, getDefaultChartUnit, getGraphType, lineGraphData } from '../../Utilities/Graph.js';
+import { getLocalDateObject, getRowsByYmd, getYmdFromDateObject, getYmdhmsFromDateObject } from '../../Utilities/Datetime.js';
 import { Link, useParams } from 'react-router';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Api } from '@jlbelanger/formosa';
-import { Chart } from 'react-chartjs-2'; // eslint-disable-line import/no-unresolved
-import Error from '../../Error';
-import Filters from './Partials/Filters';
-import MetaTitle from '../../Components/MetaTitle';
-import Row from '../Events/Partials/Row';
-import Stats from './Partials/Stats';
+import { Chart } from 'react-chartjs-2';
+import Error from '../../Error.jsx';
+import Filters from './Partials/Filters.jsx';
+import MetaTitle from '../../Components/MetaTitle.jsx';
+import Row from '../Events/Partials/Row.jsx';
+import Stats from './Partials/Stats.jsx';
 import zoomPlugin from 'chartjs-plugin-zoom';
 
 const convertToCurrentTimezone = (rows) => {
@@ -245,10 +245,10 @@ export default function View() {
 				<>
 					<div id="chart-container">
 						<Chart
-							ref={chartRef}
 							data={graphData}
 							id="chart"
 							options={graphOptions}
+							ref={chartRef}
 							type={graphType}
 						/>
 					</div>

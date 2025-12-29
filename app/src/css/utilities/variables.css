@@ -1,4 +1,12 @@
 :root {
+	/* Colors - grays. */
+	--black: #000;
+	--dark-gray: #333;
+	--gray: #666;
+	--light-gray: #999;
+	--lightest-gray: #ccc;
+	--white: #fff;
+
 	/* Colors - greens. */
 	--dark-green: #096;
 	--darker-green: hsl(from var(--dark-green) h s calc(l * .7));
@@ -27,14 +35,6 @@
 	--light-red: hsl(from var(--red) h s calc(l * 1.06));
 	--lighter-red: hsl(from var(--red) h s calc(l * 1.095));
 	--lightest-red: hsl(from var(--red) h s calc(l * 1.235));
-
-	/* Colors - grays. */
-	--white: #fff;
-	--lightest-gray: #ccc;
-	--light-gray: #999;
-	--gray: #666;
-	--dark-gray: #333;
-	--black: #000;
 
 	/* Sizes. */
 	--border-radius: 10px;

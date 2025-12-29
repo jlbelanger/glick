@@ -1,13 +1,13 @@
 import { Alert, Api, FormosaContext, Submit } from '@jlbelanger/formosa';
-import { errorMessageText, getEventLabel } from '../../Utilities/Helpers';
-import { getLocalYmdmsFromYmdhmsz, getYmdhmszFromLocalYmdhms } from '../../Utilities/Datetime';
-import React, { useContext, useEffect, useState } from 'react';
+import { errorMessageText, getEventLabel } from '../../Utilities/Helpers.js';
+import { getLocalYmdmsFromYmdhmsz, getYmdhmszFromLocalYmdhms } from '../../Utilities/Datetime.js';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import Error from '../../Error';
-import Fields from './Partials/Fields';
-import MetaTitle from '../../Components/MetaTitle';
-import Modal from '../../Components/Modal';
-import MyForm from '../../Components/MyForm';
+import Error from '../../Error.jsx';
+import Fields from './Partials/Fields.jsx';
+import MetaTitle from '../../Components/MetaTitle.jsx';
+import Modal from '../../Components/Modal.jsx';
+import MyForm from '../../Components/MyForm.jsx';
 
 export default function Edit() {
 	const api = Api.instance();
@@ -87,8 +87,8 @@ export default function Edit() {
 
 			<MyForm
 				errorMessageText={errorMessageText}
-				id={id}
 				filterValues={filterValues}
+				id={id}
 				method="PUT"
 				path="actions"
 				preventEmptyRequest
@@ -119,8 +119,10 @@ export default function Edit() {
 					event={showModal}
 					okButtonClass="formosa-button--danger"
 					okButtonText="Delete"
+					onClickCancel={() => {
+						setShowModal(false);
+					}}
 					onClickOk={deleteRow}
-					onClickCancel={() => { setShowModal(false); }}
 					text="Are you sure you want to delete this event?"
 				/>
 			)}

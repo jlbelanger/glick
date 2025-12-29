@@ -1,4 +1,4 @@
-import { mockServerError } from '../../support/commands';
+import { mockServerError } from '../../support/commands.js';
 
 describe('register', () => {
 	describe('with username that is taken', () => {
@@ -76,33 +76,34 @@ describe('register', () => {
 			// Verify email.
 			// TODO: With expired token on page load.
 			// TODO: With expired token on submit.
-			cy.visit(Cypress.env('mail_url'));
-			cy.contains(`[${Cypress.env('site_name')}] Verify Email Address`).click();
-			cy.get('#nav-plain-text-tab').click();
-			cy.get('[href*="/verify-email"]')
-				.then(($a) => {
-					// TODO: With invalid token.
-					// TODO: With invalid signature.
-					cy.visit($a.attr('href'));
-					cy.get('[data-cy="verify"]').click();
-					cy.closeToast('Email verified successfully.');
+			cy.origin(Cypress.env('mail_url'), () => {
+				cy.visit(Cypress.env('mail_url'));
+				cy.contains(`[${Cypress.env('site_name')}] Verify Email Address`).click();
+				cy.get('#nav-plain-text-tab').click();
+				cy.get('[href*="/verify-email"]').invoke('attr', 'href');
+			}).then((verifyEmailUrl) => {
+				// TODO: With invalid token.
+				// TODO: With invalid signature.
+				cy.visit(verifyEmailUrl);
+				cy.get('[data-cy="verify"]').click();
+				cy.closeToast('Email verified successfully.');
 
-					// Login.
-					cy.get('[name="username"]').type(username);
-					cy.get('[name="password"]').type(Cypress.env('default_password'));
-					cy.get('[type="submit"]').click();
-					cy.wait('@login').its('response.statusCode').should('equal', 200);
-					cy.wait('@getActionTypes').its('response.statusCode').should('equal', 200);
-					cy.location('pathname').should('eq', '/event-types/new');
+				// Login.
+				cy.get('[name="username"]').type(username);
+				cy.get('[name="password"]').type(Cypress.env('default_password'));
+				cy.get('[type="submit"]').click();
+				cy.wait('@login').its('response.statusCode').should('equal', 200);
+				cy.wait('@getActionTypes').its('response.statusCode').should('equal', 200);
+				cy.location('pathname').should('eq', '/event-types/new');
 
-					// Delete.
-					cy.get('[data-cy="profile"]').click();
-					cy.wait('@getUser').its('response.statusCode').should('equal', 200);
-					cy.get('.formosa-button--danger').contains('Delete account').click();
-					cy.get('dialog .formosa-button--danger').contains('Delete').click();
-					cy.wait('@deleteUser').its('response.statusCode').should('equal', 204);
-					cy.location('pathname').should('eq', Cypress.env('public_path'));
-				});
+				// Delete.
+				cy.get('[data-cy="profile"]').click();
+				cy.wait('@getUser').its('response.statusCode').should('equal', 200);
+				cy.get('.formosa-button--danger').contains('Delete account').click();
+				cy.get('dialog .formosa-button--danger').contains('Delete').click();
+				cy.wait('@deleteUser').its('response.statusCode').should('equal', 204);
+				cy.location('pathname').should('eq', Cypress.env('public_path'));
+			});
 		});
 	});
 

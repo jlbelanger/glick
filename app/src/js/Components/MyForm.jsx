@@ -1,7 +1,7 @@
 import { Form, FormosaContext } from '@jlbelanger/formosa';
-import React, { useContext } from 'react';
-import MyFormPrompt from './MyFormPrompt';
+import MyFormPrompt from './MyFormPrompt.jsx';
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
 
 export default function MyForm({ children, ...otherProps }) {
 	const { showWarningPrompt } = useContext(FormosaContext);

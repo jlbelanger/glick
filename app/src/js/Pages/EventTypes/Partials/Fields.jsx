@@ -1,6 +1,6 @@
 import { Field, FormContext } from '@jlbelanger/formosa';
-import React, { useContext } from 'react';
-import HasMany from './HasMany';
+import HasMany from './HasMany.jsx';
+import { useContext } from 'react';
 
 export default function Fields() {
 	const { formState } = useContext(FormContext);
@@ -18,13 +18,13 @@ export default function Fields() {
 				<Field
 					label="Style"
 					name="field_type"
-					required
-					type="radio"
 					options={{
 						button: 'Buttons',
 						number: 'Number',
 						text: 'Text',
 					}}
+					required
+					type="radio"
 				/>
 			)}
 
@@ -39,8 +39,8 @@ export default function Fields() {
 					<Field
 						component={HasMany}
 						label="Custom button labels"
-						name="options"
 						labelNote={formState.row.options && formState.row.options.length > 0 ? '' : defaultMessage}
+						name="options"
 					/>
 				</>
 			)}
@@ -48,16 +48,16 @@ export default function Fields() {
 			{formState.row.field_type === 'number' && (
 				<Field
 					label="Units"
-					name="suffix"
 					labelNote="optional, eg. lbs"
+					name="suffix"
 					size={10}
 				/>
 			)}
 
 			<Field
 				label="Archive?"
-				name="is_archived"
 				labelNote="archived event types do not appear on the New Event page"
+				name="is_archived"
 				type="checkbox"
 			/>
 		</>

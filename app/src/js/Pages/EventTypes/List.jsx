@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Api } from '@jlbelanger/formosa';
-import Error from '../../Error';
+import Error from '../../Error.jsx';
 import { Link } from 'react-router';
-import MetaTitle from '../../Components/MetaTitle';
+import MetaTitle from '../../Components/MetaTitle.jsx';
 
 export default function List() {
 	const api = Api.instance();

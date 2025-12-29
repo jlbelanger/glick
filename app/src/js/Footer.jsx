@@ -1,6 +1,5 @@
-import Auth from './Utilities/Auth';
+import Auth from './Utilities/Auth.js';
 import { NavLink } from 'react-router';
-import React from 'react';
 
 export default function Footer() {
 	return (

@@ -1,5 +1,5 @@
-import { React, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 
 export default function MetaTitle({
 	children = null,

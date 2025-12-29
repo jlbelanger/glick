@@ -92,7 +92,7 @@ export const getRowsByYmd = (rows) => {
 	const output = {};
 	rows.forEach((row) => {
 		const ymd = getLocalYmdFromYmdhmsz(row.start_date);
-		if (!Object.prototype.hasOwnProperty.call(output, ymd)) {
+		if (!Object.hasOwn(output, ymd)) {
 			output[ymd] = [];
 		}
 		output[ymd].push(row);

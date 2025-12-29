@@ -1,9 +1,8 @@
 import { Api, FormContainer } from '@jlbelanger/formosa';
-import Auth from './Utilities/Auth';
-import Footer from './Footer';
-import Header from './Header';
+import Auth from './Utilities/Auth.js';
+import Footer from './Footer.jsx';
+import Header from './Header.jsx';
 import { Outlet } from 'react-router';
-import React from 'react';
 
 export default function Layout() {
 	if (Auth.isLoggedIn() && !Api.getToken()) {

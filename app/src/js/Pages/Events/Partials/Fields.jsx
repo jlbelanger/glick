@@ -1,5 +1,5 @@
 import { Field, FormContext } from '@jlbelanger/formosa';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 
 export default function Fields() {
 	const { formState } = useContext(FormContext);
@@ -19,7 +19,7 @@ export default function Fields() {
 				type="text"
 			/>
 
-			{!!formState.row.action_type.is_continuous && (
+			{Boolean(formState.row.action_type.is_continuous) && (
 				<Field
 					label="End date"
 					name="end_date"

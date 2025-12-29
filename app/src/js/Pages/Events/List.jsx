@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Api } from '@jlbelanger/formosa';
-import Error from '../../Error';
-import { getRowsByYmd } from '../../Utilities/Datetime';
+import Error from '../../Error.jsx';
+import { getRowsByYmd } from '../../Utilities/Datetime.js';
 import { Link } from 'react-router';
-import MetaTitle from '../../Components/MetaTitle';
-import Row from './Partials/Row';
+import MetaTitle from '../../Components/MetaTitle.jsx';
+import Row from './Partials/Row.jsx';
 
 export default function List() {
 	const api = Api.instance();
@@ -24,7 +24,7 @@ export default function List() {
 					return;
 				}
 				setHasMore(currentPage < response.meta.page.total_pages);
-				if (!Object.prototype.hasOwnProperty.call(response, 'data')) {
+				if (!Object.hasOwn(response, 'data')) {
 					setRows([]);
 				} else if (rows === null) {
 					setRows(response.data);
@@ -35,21 +35,21 @@ export default function List() {
 			});
 	};
 
+	// https://davidwalsh.name/javascript-debounce-function
 	const debounce = (func, wait, immediate) => {
 		let timeout;
-		return function (...args) { // eslint-disable-line func-names
-			const context = this;
+		return (...args) => {
 			const later = () => {
 				timeout = null;
 				if (!immediate) {
-					func.apply(context, args);
+					func(...args);
 				}
 			};
 			const callNow = immediate && !timeout;
 			clearTimeout(timeout);
 			timeout = setTimeout(later, wait);
 			if (callNow) {
-				func.apply(context, args);
+				func(...args);
 			}
 		};
 	};

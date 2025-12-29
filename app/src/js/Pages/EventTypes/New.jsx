@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { errorMessageText } from '../../Utilities/Helpers';
-import Fields from './Partials/Fields';
-import MetaTitle from '../../Components/MetaTitle';
-import MyForm from '../../Components/MyForm';
+import { errorMessageText } from '../../Utilities/Helpers.js';
+import Fields from './Partials/Fields.jsx';
+import MetaTitle from '../../Components/MetaTitle.jsx';
+import MyForm from '../../Components/MyForm.jsx';
 import { Submit } from '@jlbelanger/formosa';
 import { useNavigate } from 'react-router';
+import { useState } from 'react';
 
 export default function New() {
 	const [row, setRow] = useState({});

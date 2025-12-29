@@ -1,19 +1,19 @@
 import { createBrowserRouter } from 'react-router';
-import Error404 from './Error404';
-import EventEdit from './Pages/Events/Edit';
-import EventList from './Pages/Events/List';
-import EventTypeEdit from './Pages/EventTypes/Edit';
-import EventTypeList from './Pages/EventTypes/List';
-import EventTypeNew from './Pages/EventTypes/New';
-import EventTypeView from './Pages/EventTypes/View';
-import ForgotPassword from './Pages/Auth/ForgotPassword';
-import Layout from './Layout';
-import Login from './Pages/Auth/Login';
-import PrivateRoute from './Components/PrivateRoute';
-import Profile from './Pages/Users/Edit';
-import Register from './Pages/Auth/Register';
-import ResetPassword from './Pages/Auth/ResetPassword';
-import VerifyEmail from './Pages/Auth/VerifyEmail';
+import Error404 from './Error404.jsx';
+import EventEdit from './Pages/Events/Edit.jsx';
+import EventList from './Pages/Events/List.jsx';
+import EventTypeEdit from './Pages/EventTypes/Edit.jsx';
+import EventTypeList from './Pages/EventTypes/List.jsx';
+import EventTypeNew from './Pages/EventTypes/New.jsx';
+import EventTypeView from './Pages/EventTypes/View.jsx';
+import ForgotPassword from './Pages/Auth/ForgotPassword.jsx';
+import Layout from './Layout.jsx';
+import Login from './Pages/Auth/Login.jsx';
+import PrivateRoute from './Components/PrivateRoute.jsx';
+import Profile from './Pages/Users/Edit.jsx';
+import Register from './Pages/Auth/Register.jsx';
+import ResetPassword from './Pages/Auth/ResetPassword.jsx';
+import VerifyEmail from './Pages/Auth/VerifyEmail.jsx';
 
 export default createBrowserRouter(
 	[

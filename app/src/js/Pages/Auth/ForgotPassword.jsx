@@ -1,9 +1,9 @@
 import { Alert, Field, Form } from '@jlbelanger/formosa';
 import { Link, useNavigate, useSearchParams } from 'react-router';
-import React, { useEffect, useState } from 'react';
-import Auth from '../../Utilities/Auth';
-import { errorMessageText } from '../../Utilities/Helpers';
-import MetaTitle from '../../Components/MetaTitle';
+import { useEffect, useState } from 'react';
+import Auth from '../../Utilities/Auth.js';
+import { errorMessageText } from '../../Utilities/Helpers.js';
+import MetaTitle from '../../Components/MetaTitle.jsx';
 
 export default function ForgotPassword() {
 	const [urlSearchParams] = useSearchParams();
@@ -27,7 +27,10 @@ export default function ForgotPassword() {
 
 	return (
 		<Form
-			beforeSubmit={() => { setMessage(false); return true; }}
+			beforeSubmit={() => {
+				setMessage(false);
+				return true;
+			}}
 			clearOnSubmit
 			errorMessageText={errorMessageText}
 			method="POST"

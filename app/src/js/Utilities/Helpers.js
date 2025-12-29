@@ -1,4 +1,4 @@
-import Auth from './Auth';
+import Auth from './Auth.js';
 
 export const errorMessageText = (response, logout = true) => {
 	if (logout && response.status === 401) {
@@ -13,7 +13,7 @@ export const afterSubmitFailure = (error) => {
 	}
 };
 
-export const getEventLabel = (event) => { // eslint-disable-line import/prefer-default-export
+export const getEventLabel = (event) => {
 	let label = event.action_type.label;
 	if (event.value) {
 		let value = event.value;

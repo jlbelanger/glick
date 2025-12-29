@@ -1,7 +1,6 @@
 import { Field } from '@jlbelanger/formosa';
-import { getYmdFromDateObject } from '../../../Utilities/Datetime';
+import { getYmdFromDateObject } from '../../../Utilities/Datetime.js';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 export default function Filters({ chartRef, fromYmd, minDateObject, range, setFromYmd, setRange, setToYmd, toYmd }) {
 	const zoomChart = (newFromDate, newToDate) => {
@@ -22,9 +21,7 @@ export default function Filters({ chartRef, fromYmd, minDateObject, range, setFr
 			<Field
 				label="Range:"
 				name="range"
-				type="radio"
 				options={['day', 'week', 'month', 'year', 'all', 'custom']}
-				value={range}
 				setValue={(newRange) => {
 					const today = new Date();
 					today.setHours(0);
@@ -54,6 +51,8 @@ export default function Filters({ chartRef, fromYmd, minDateObject, range, setFr
 					setToYmd(newToDateYmd);
 					zoomChart(newFromDateYmd, newToDateYmd);
 				}}
+				type="radio"
+				value={range}
 				wrapperClassName="range"
 			/>
 			{range !== 'all' && (
@@ -116,12 +115,12 @@ export default function Filters({ chartRef, fromYmd, minDateObject, range, setFr
 						size={10}
 						type="text"
 						value={toYmd}
-						wrapperClassName="chart-field"
 						wrapperAttributes={{
 							style: {
 								paddingLeft: 12,
 							},
 						}}
+						wrapperClassName="chart-field"
 					/>
 				</div>
 			)}
