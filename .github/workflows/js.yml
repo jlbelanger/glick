@@ -9,7 +9,9 @@ jobs:
       with:
         node-version: '24'
     - uses: actions/checkout@v3
-    - run: yarn install
+    - run: npm install
       working-directory: app
-    - run: yarn run lint
+    - run: npm run lint
+      working-directory: app
+    - run: npm run test:js
       working-directory: app

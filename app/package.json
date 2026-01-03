@@ -14,13 +14,14 @@
 		"url": "https://github.com/jlbelanger/glick.git"
 	},
 	"scripts": {
-		"start": "node_modules/.bin/update-browserslist-db && vite",
+		"start": "npx update-browserslist-db && vite",
 		"build": "vite build",
-		"lint": "yarn lint:css && yarn lint:js",
-		"lint:css": "node_modules/.bin/stylelint 'src/css/**/*.css'",
-		"lint:js": "node_modules/.bin/eslint .",
-		"test": "TZ=America/Los_Angeles node_modules/.bin/jest --watch",
-		"test:cypress": "TZ=America/Los_Angeles node_modules/.bin/cypress open"
+		"lint": "npm run lint:css && npm run lint:js",
+		"lint:css": "npx stylelint 'src/css/**/*.css'",
+		"lint:js": "npx eslint .",
+		"test:js": "TZ=America/Los_Angeles npx jest",
+		"test:cypress": "TZ=America/Los_Angeles npx cypress open",
+		"test:watch": "TZ=America/Los_Angeles npx jest --watch"
 	},
 	"dependencies": {
 		"@jlbelanger/formosa": "jlbelanger/formosa#99e1ad71849b821dea3957851b50a16ba3cbc798",

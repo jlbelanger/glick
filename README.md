@@ -8,7 +8,7 @@
 
 - [Composer](https://getcomposer.org/)
 - [Git](https://git-scm.com/)
-- [Yarn](https://classic.yarnpkg.com/en/docs/install)
+- [Node](https://nodejs.org/)
 - Database
 - Web server with PHP
 
@@ -45,13 +45,13 @@ cp .env.example .env.production
 cp cypress.env.example.json cypress.env.json
 
 # Install JS dependencies
-yarn install
+npm install
 ```
 
 ### Run
 
 ``` bash
-cd app && yarn start
+cd app && npm start
 ```
 
 Your browser should automatically open http://localhost:3000/
@@ -63,17 +63,15 @@ Your browser should automatically open http://localhost:3000/
 ```
 
 ``` bash
-cd app && yarn lint
+cd app && npm run lint
 ```
 
 ### Test
 
 ``` bash
 ./api/vendor/bin/phpunit
-```
-
-``` bash
-cd app && yarn test:cypress
+cd app && npm run test:cypress
+cd app && npm run test:watch
 ```
 
 ## Deployment
@@ -92,7 +90,7 @@ chown -R www-data:www-data storage
 cd ../app
 cp .env.example .env
 # Then configure the values in .env.
-yarn build
+npm run build
 ```
 
 For subsequent deploys, push changes to the main branch, then run the following on the server:
@@ -105,7 +103,7 @@ cd api
 composer install
 php artisan config:clear
 cd ../app
-yarn build
+npm run build
 ```
 
 ### Deploy script
