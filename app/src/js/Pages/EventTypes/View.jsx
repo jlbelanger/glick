@@ -65,7 +65,7 @@ export default function View() {
 	const [graphOptions, setGraphOptions] = useState(null);
 	const [graphType, setGraphType] = useState('');
 	const [minDateObject, setMinDateObject] = useState(null);
-	const defaultDateObject = useMemo(() => (new Date()));
+	const defaultDateObject = useMemo(() => new Date());
 	const [fromYmd, setFromYmd] = useState(getYmdFromDateObject(defaultDateObject));
 	const [toYmd, setToYmd] = useState(getYmdFromDateObject(defaultDateObject));
 	const [range, setRange] = useState('all');
@@ -187,7 +187,7 @@ export default function View() {
 						PointElement,
 						TimeScale,
 						Tooltip,
-						zoomPlugin
+						zoomPlugin,
 					);
 
 					setMinDateObject(newMinDateObject);
@@ -206,15 +206,11 @@ export default function View() {
 	}, [id]);
 
 	if (error) {
-		return (
-			<Error error={error} />
-		);
+		return <Error error={error} />;
 	}
 
 	if (row === null) {
-		return (
-			<MetaTitle title="Loading..." />
-		);
+		return <MetaTitle title="Loading..." />;
 	}
 
 	let rows = actions;
@@ -244,13 +240,7 @@ export default function View() {
 			{graphData && graphOptions && graphType && (
 				<>
 					<div id="chart-container">
-						<Chart
-							data={graphData}
-							id="chart"
-							options={graphOptions}
-							ref={chartRef}
-							type={graphType}
-						/>
+						<Chart data={graphData} id="chart" options={graphOptions} ref={chartRef} type={graphType} />
 					</div>
 
 					<Stats
@@ -275,14 +265,10 @@ export default function View() {
 			{total > 0 ? (
 				<table>
 					<tbody>
-						{Object.keys(rowsByYmd).map((ymd) => (
-							<Row key={ymd} rows={rowsByYmd[ymd]} ymd={ymd} />
-						))}
+						{Object.keys(rowsByYmd).map((ymd) => <Row key={ymd} rows={rowsByYmd[ymd]} ymd={ymd} />)}
 					</tbody>
 				</table>
-			) : (
-				<p>No events found.</p>
-			)}
+			) : <p>No events found.</p>}
 		</>
 	);
 }

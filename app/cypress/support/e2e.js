@@ -4,7 +4,7 @@ Cypress.Commands.add('login', (username = '', password = '') => {
 	username = username || Cypress.env('default_username');
 	password = password || Cypress.env('default_password');
 	cy.session([username, password], () => {
-		const timestamp = (new Date()).getTime();
+		const timestamp = new Date().getTime();
 		cy.visit('/');
 		cy.get('[name="username"]').type(username);
 		cy.get('[name="password"]').type(password);

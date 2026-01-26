@@ -62,9 +62,10 @@ export default function List() {
 		const pxFromTop = document.documentElement.scrollTop;
 		const pageHeight = document.documentElement.scrollHeight;
 		const browserHeight = document.documentElement.clientHeight;
+		const threshold = pxFromTop + (browserHeight * 2);
 
-		if ((pxFromTop + (browserHeight * 2)) >= pageHeight) {
-			setCurrentPage((oldVal) => (oldVal + 1));
+		if (threshold >= pageHeight) {
+			setCurrentPage((oldVal) => oldVal + 1);
 		}
 	};
 
@@ -83,15 +84,11 @@ export default function List() {
 	}, []);
 
 	if (error) {
-		return (
-			<Error error={error} />
-		);
+		return <Error error={error} />;
 	}
 
 	if (rows === null) {
-		return (
-			<MetaTitle title="Past events" />
-		);
+		return <MetaTitle title="Past events" />;
 	}
 
 	const rowsByYmd = getRowsByYmd(rows);
@@ -105,14 +102,10 @@ export default function List() {
 			{rows.length > 0 ? (
 				<table>
 					<tbody>
-						{Object.keys(rowsByYmd).map((ymd) => (
-							<Row key={ymd} rows={rowsByYmd[ymd]} ymd={ymd} />
-						))}
+						{Object.keys(rowsByYmd).map((ymd) => <Row key={ymd} rows={rowsByYmd[ymd]} ymd={ymd} />)}
 					</tbody>
 				</table>
-			) : (
-				<p>No events found.</p>
-			)}
+			) : <p>No events found.</p>}
 		</>
 	);
 }

@@ -60,7 +60,8 @@ const createPeriodGroups = (minDateObject, maxDateObject, range) => {
 	const output = {};
 	output[getPeriod(minDateObject, range)] = [];
 
-	while (minDateObject < maxDateObject) { // eslint-disable-line no-unmodified-loop-condition
+	// eslint-disable-next-line no-unmodified-loop-condition
+	while (minDateObject < maxDateObject) {
 		if (range === 'year') {
 			minDateObject.setFullYear(minDateObject.getFullYear() + 1);
 		} else if (range === 'month') {
@@ -102,8 +103,8 @@ const round = (value) => {
 const calculate = (values) => {
 	// Calculate the average.
 	const numValues = values.length;
-	values = values.sort((a, b) => (a - b));
-	const sum = values.reduce((partialSum, n) => (partialSum + n), 0);
+	values = values.sort((a, b) => a - b);
+	const sum = values.reduce((partialSum, n) => partialSum + n, 0);
 	const average = round(sum / numValues);
 
 	// Calculate the median.
@@ -182,21 +183,11 @@ export default function Stats({ actions, chartRef, fromYmd, graphType, setUnit, 
 	return (
 		<>
 			<div className="chart-field-container" id="chart-stats">
-				<div className="stat">
-					{`Average: ${results.average === undefined ? '?' : results.average} ${suffix || ''}`.trim()}
-				</div>
-				<div className="stat">
-					{`Median: ${results.median === undefined ? '?' : results.median} ${suffix || ''}`.trim()}
-				</div>
-				<div className="stat">
-					{`Min: ${results.min === undefined ? '?' : results.min} ${suffix || ''}`.trim()}
-				</div>
-				<div className="stat">
-					{`Max: ${results.max === undefined ? '?' : results.max} ${suffix || ''}`.trim()}
-				</div>
-				<div className="stat">
-					{`Total: ${total.toLocaleString()}`}
-				</div>
+				<div className="stat">{`Average: ${results.average === undefined ? '?' : results.average} ${suffix || ''}`.trim()}</div>
+				<div className="stat">{`Median: ${results.median === undefined ? '?' : results.median} ${suffix || ''}`.trim()}</div>
+				<div className="stat">{`Min: ${results.min === undefined ? '?' : results.min} ${suffix || ''}`.trim()}</div>
+				<div className="stat">{`Max: ${results.max === undefined ? '?' : results.max} ${suffix || ''}`.trim()}</div>
+				<div className="stat">{`Total: ${total.toLocaleString()}`}</div>
 			</div>
 			{graphType === 'bar' && (
 				<Field

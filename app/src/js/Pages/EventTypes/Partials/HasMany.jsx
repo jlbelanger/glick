@@ -72,7 +72,7 @@ export default function HasMany() {
 							<tr className="formosa-has-many__row" key={value.id}>
 								<td className={className.join(' ')}>
 									<Input className="formosa-prefix" name={`options.${i}.label`} />
-									{hasError && <div className="formosa-field__error">{formState.errors[rowKey].join((<br />))}</div>}
+									{hasError && <div className="formosa-field__error">{formState.errors[rowKey].join(<br />)}</div>}
 								</td>
 								<td className="formosa-has-many__column formosa-has-many__column--button">
 									<button
@@ -93,13 +93,7 @@ export default function HasMany() {
 			<tfoot className="formosa-has-many__foot">
 				<tr className="formosa-has-many__row formosa-has-many__row--new">
 					<td className="formosa-has-many__column">
-						<Input
-							className="formosa-prefix"
-							id="new-label"
-							onKeyDown={onKeyDown}
-							setValue={setNewLabel}
-							value={newLabel}
-						/>
+						<Input className="formosa-prefix" id="new-label" onKeyDown={onKeyDown} setValue={setNewLabel} value={newLabel} />
 					</td>
 					<td className="formosa-has-many__column formosa-has-many__column--button">
 						<button

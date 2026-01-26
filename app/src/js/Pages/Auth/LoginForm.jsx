@@ -37,7 +37,7 @@ export default function LoginForm({
 
 	return (
 		<>
-			{message && (<Alert type={message.type}>{message.text}</Alert>)}
+			{message && <Alert type={message.type}>{message.text}</Alert>}
 
 			{showVerificationButton && (
 				<p className={`formosa-alert formosa-alert--${showVerificationButton === true ? 'error' : 'success'} post-alert-button`}>

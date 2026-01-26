@@ -5,13 +5,13 @@ jobs:
     name: JS
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '24'
-    - uses: actions/checkout@v3
-    - run: npm install
-      working-directory: app
-    - run: npm run lint
-      working-directory: app
-    - run: npm run test:js
-      working-directory: app
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '24'
+      - uses: actions/checkout@v3
+      - run: npm install
+        working-directory: app
+      - run: npm run lint
+        working-directory: app
+      - run: npm run test:js
+        working-directory: app

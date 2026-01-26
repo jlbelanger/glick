@@ -9,15 +9,10 @@ export default defineConfig(() => ({
 	},
 	css: {
 		postcss: {
-			plugins: [
-				postcssMixins,
-			],
+			plugins: [postcssMixins],
 		},
 	},
-	plugins: [
-		react(),
-		svgr(),
-	],
+	plugins: [react(), svgr()],
 	server: {
 		open: true,
 		port: 3000,

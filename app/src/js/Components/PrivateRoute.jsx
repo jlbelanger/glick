@@ -3,11 +3,7 @@ import Auth from '../Utilities/Auth.js';
 
 export default function PrivateRoute() {
 	if (Auth.isLoggedIn()) {
-		return (
-			<Outlet />
-		);
+		return <Outlet />;
 	}
-	return (
-		<Navigate replace to={`/?redirect=${encodeURIComponent(`${window.location.pathname}${window.location.search}`)}`} />
-	);
+	return <Navigate replace to={`/?redirect=${encodeURIComponent(`${window.location.pathname}${window.location.search}`)}`} />;
 }

@@ -45,15 +45,11 @@ export default function Edit() {
 	}, [id]);
 
 	if (error) {
-		return (
-			<Error error={error} />
-		);
+		return <Error error={error} />;
 	}
 
 	if (row === null) {
-		return (
-			<MetaTitle title="Edit" />
-		);
+		return <MetaTitle title="Edit" />;
 	}
 
 	const deleteRow = () => {
@@ -101,7 +97,7 @@ export default function Edit() {
 			</MyForm>
 
 			<h2>{`Delete ${row.action_type.label}`}</h2>
-			{deleteError && (<Alert type="error">{deleteError}</Alert>)}
+			{deleteError && <Alert type="error">{deleteError}</Alert>}
 			<p>
 				<button
 					className="formosa-button formosa-button--danger button--small"

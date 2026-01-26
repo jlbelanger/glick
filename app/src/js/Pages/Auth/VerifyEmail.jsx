@@ -27,9 +27,7 @@ export default function VerifyEmail() {
 				path={`auth/verify-email${window.location.search}`}
 				successToastText="Email verified successfully."
 			>
-				<p>
-					Please click the verify button to complete the registration process.
-				</p>
+				<p>Please click the verify button to complete the registration process.</p>
 				<Submit data-cy="verify" label="Verify" />
 			</Form>
 		</>

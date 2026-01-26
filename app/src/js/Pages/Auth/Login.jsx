@@ -66,7 +66,7 @@ export default function Login() {
 				afterSubmitFailure={afterSubmitFailure}
 				afterSubmitSuccess={afterSubmitSuccess}
 				beforeSubmit={beforeSubmit}
-				errorMessageText={(response) => (errorMessageText(response, false))}
+				errorMessageText={(response) => errorMessageText(response, false)}
 				method="POST"
 				path="auth/login"
 				row={row}

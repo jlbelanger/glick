@@ -61,7 +61,7 @@ export default function Modal({
 	return (
 		<dialog className="modal" ref={dialogRef} tabIndex={-1}>
 			<div className="modal__box">
-				{children || (<p className="modal__text">{text}</p>)}
+				{children || <p className="modal__text">{text}</p>}
 				<p className="modal__options">
 					<button className={`formosa-button ${okButtonClass}`.trim()} onClick={onClickOk} type="button">
 						{okButtonText}

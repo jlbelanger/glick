@@ -1,11 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 
-export default function MetaTitle({
-	children = null,
-	hideTitleText = false,
-	title = '',
-}) {
+export default function MetaTitle({ children = null, hideTitleText = false, title = '' }) {
 	useEffect(() => {
 		let metaTitle = title;
 		if (import.meta.env.VITE_TITLE) {
@@ -18,9 +14,7 @@ export default function MetaTitle({
 	}, [title]);
 
 	if (hideTitleText) {
-		return (
-			<div id="heading-spacer" />
-		);
+		return <div id="heading-spacer" />;
 	}
 
 	return (

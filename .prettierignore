@@ -1,0 +1,4 @@
+api/vendor
+app/build
+app/cypress
+**/*.jsx

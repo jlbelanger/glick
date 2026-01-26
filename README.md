@@ -14,7 +14,7 @@
 
 ### Setup
 
-``` bash
+```bash
 # Clone the repo
 git clone https://github.com/jlbelanger/glick.git
 
@@ -50,7 +50,7 @@ npm install
 
 ### Run
 
-``` bash
+```bash
 cd app && npm start
 ```
 
@@ -58,17 +58,17 @@ Your browser should automatically open http://localhost:3000/
 
 ### Lint
 
-``` bash
+```bash
 ./api/vendor/bin/phpcs
 ```
 
-``` bash
+```bash
 cd app && npm run lint
 ```
 
 ### Test
 
-``` bash
+```bash
 ./api/vendor/bin/phpunit
 cd app && npm run test:cypress
 cd app && npm run test:watch
@@ -78,7 +78,7 @@ cd app && npm run test:watch
 
 Essentially, to set up the repo on the server:
 
-``` bash
+```bash
 git clone https://github.com/jlbelanger/glick.git
 cd glick/api
 cp .env.example .env
@@ -95,7 +95,7 @@ npm run build
 
 For subsequent deploys, push changes to the main branch, then run the following on the server:
 
-``` bash
+```bash
 cd glick
 git fetch origin
 git pull
@@ -110,6 +110,6 @@ npm run build
 
 Note: The deploy script included in this repo depends on other scripts that only exist in my private repos. If you want to deploy this repo, you'll have to create your own script.
 
-``` bash
+```bash
 ./deploy.sh
 ```

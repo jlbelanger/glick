@@ -41,9 +41,7 @@ export default function New() {
 	}, []);
 
 	if (error) {
-		return (
-			<Error error={error} />
-		);
+		return <Error error={error} />;
 	}
 
 	if (rows === null) {
@@ -115,7 +113,7 @@ export default function New() {
 
 	const setInProgress = (actionTypeId, value) => {
 		const newActionTypes = [...rows];
-		const i = newActionTypes.findIndex((actionType) => (actionType.id === actionTypeId));
+		const i = newActionTypes.findIndex((actionType) => actionType.id === actionTypeId);
 		newActionTypes[i].in_progress = value;
 		setRows(newActionTypes);
 	};

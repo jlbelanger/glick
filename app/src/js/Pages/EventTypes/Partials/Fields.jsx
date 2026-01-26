@@ -8,11 +8,7 @@ export default function Fields() {
 
 	return (
 		<>
-			<Field
-				label="Name"
-				name="label"
-				required
-			/>
+			<Field label="Name" name="label" required />
 
 			{!formState.row.id && (
 				<Field
@@ -30,11 +26,7 @@ export default function Fields() {
 
 			{formState.row.field_type === 'button' && (
 				<>
-					<Field
-						label="Track when the event stops"
-						name="is_continuous"
-						type="checkbox"
-					/>
+					<Field label="Track when the event stops" name="is_continuous" type="checkbox" />
 
 					<Field
 						component={HasMany}
@@ -45,14 +37,7 @@ export default function Fields() {
 				</>
 			)}
 
-			{formState.row.field_type === 'number' && (
-				<Field
-					label="Units"
-					labelNote="optional, eg. lbs"
-					name="suffix"
-					size={10}
-				/>
-			)}
+			{formState.row.field_type === 'number' && <Field label="Units" labelNote="optional, eg. lbs" name="suffix" size={10} />}
 
 			<Field
 				label="Archive?"

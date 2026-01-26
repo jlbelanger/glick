@@ -11,7 +11,7 @@ export default function NewField({ actionType, inlineErrors, setInProgress, setI
 		className: 'formosa-prefix',
 		id: actionType.slug,
 		name: 'value',
-		postfix: (<button className="formosa-button formosa-postfix" type="submit">Add</button>),
+		postfix: <button className="formosa-button formosa-postfix" type="submit">Add</button>,
 		required: true,
 		type: 'text',
 	};

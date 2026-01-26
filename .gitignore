@@ -1,3 +1,4 @@
 .DS_Store
 TODO.md
 .gitcommit
+/node_modules

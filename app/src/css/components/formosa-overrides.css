@@ -20,7 +20,7 @@ p,
 	display: inline-block;
 	font-size: 80%;
 	margin-left: 4px;
-	opacity: .5;
+	opacity: 0.5;
 
 	&::before {
 		content: ' (';

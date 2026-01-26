@@ -7,7 +7,7 @@ export default function MyFormPrompt() {
 
 	unstable_usePrompt({
 		message: 'You have unsaved changes. Are you sure you want to leave this page?',
-		when: () => (getDirtyKeys().length > 0),
+		when: () => getDirtyKeys().length > 0,
 	});
 
 	return null;

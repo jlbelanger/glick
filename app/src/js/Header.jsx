@@ -25,12 +25,16 @@ export default function Header() {
 	return (
 		<header id="header">
 			<div className="contain" id="header__contain">
-				{Auth.isLoggedIn() && (
-					<NavLink className="nav__link" data-cy="profile" to="/profile">Profile</NavLink>
-				)}
+				{Auth.isLoggedIn() && <NavLink className="nav__link" data-cy="profile" to="/profile">Profile</NavLink>}
 				<div id="logo"><Logo fill="#fff" height="28" title={import.meta.env.VITE_TITLE} /></div>
 				{Auth.isLoggedIn() && (
-					<button className="nav__button" data-cy="logout" disabled={location.pathname !== '/profile'} onClick={logout} type="button">
+					<button
+						className="nav__button"
+						data-cy="logout"
+						disabled={location.pathname !== '/profile'}
+						onClick={logout}
+						type="button"
+					>
 						Logout
 					</button>
 				)}

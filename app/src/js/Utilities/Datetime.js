@@ -11,9 +11,7 @@ export const getYmdhmszFromLocalYmdhms = (ymdhms) => {
 	return dateObject.toISOString().substring(0, 19).replace('T', ' ');
 };
 
-export const getCurrentYmdhmsz = () => (
-	new Date().toISOString().substring(0, 19).replace('T', ' ')
-);
+export const getCurrentYmdhmsz = () => new Date().toISOString().substring(0, 19).replace('T', ' ');
 
 export const pad = (n, width = 2, z = '0') => {
 	z = z || '0';
@@ -49,20 +47,17 @@ export const getLocalYmdmsFromYmdhmsz = (ymdhmsz) => {
 	return getYmdhmsFromDateObject(dateObject);
 };
 
-export const getLocalDateObject = (ymdhmsz) => (
-	new Date(`${ymdhmsz.replace(' ', 'T')}.000Z`)
-);
+export const getLocalDateObject = (ymdhmsz) => new Date(`${ymdhmsz.replace(' ', 'T')}.000Z`);
 
-export const prettyDate = (ymd) => (
+export const prettyDate = (ymd) =>
 	new Date(`${ymd}T12:00:00.000Z`).toLocaleString('en-CA', {
 		weekday: 'short',
 		year: 'numeric',
 		month: 'long',
 		day: 'numeric',
-	})
-);
+	});
 
-export const prettyDatetime = (ymdhmsz) => (
+export const prettyDatetime = (ymdhmsz) =>
 	new Date(`${ymdhmsz.replace(' ', 'T')}.000Z`)
 		.toLocaleString('en-CA', {
 			month: 'short',
@@ -71,22 +66,18 @@ export const prettyDatetime = (ymdhmsz) => (
 			minute: 'numeric',
 		})
 		.replace('a.m.', 'AM')
-		.replace('p.m.', 'PM')
-);
+		.replace('p.m.', 'PM');
 
-export const prettyTime = (ymdhmsz) => (
+export const prettyTime = (ymdhmsz) =>
 	new Date(`${ymdhmsz.replace(' ', 'T')}.000Z`)
 		.toLocaleTimeString('en-CA', {
 			hour: 'numeric',
 			minute: 'numeric',
 		})
 		.replace('a.m.', 'AM')
-		.replace('p.m.', 'PM')
-);
+		.replace('p.m.', 'PM');
 
-export const isToday = (ymdhmsz) => (
-	getLocalYmdFromYmdhmsz(ymdhmsz) === getYmdFromDateObject(new Date())
-);
+export const isToday = (ymdhmsz) => getLocalYmdFromYmdhmsz(ymdhmsz) === getYmdFromDateObject(new Date());
 
 export const getRowsByYmd = (rows) => {
 	const output = {};

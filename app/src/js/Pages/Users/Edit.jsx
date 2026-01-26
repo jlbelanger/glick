@@ -46,15 +46,11 @@ export default function Edit() {
 	}, [id]);
 
 	if (error) {
-		return (
-			<Error error={error} />
-		);
+		return <Error error={error} />;
 	}
 
 	if (row === null) {
-		return (
-			<MetaTitle title="Profile" />
-		);
+		return <MetaTitle title="Profile" />;
 	}
 
 	return (
@@ -66,7 +62,7 @@ export default function Edit() {
 			<ChangePassword />
 
 			<h2>Delete data</h2>
-			{deleteError && (<Alert type="error">{deleteError}</Alert>)}
+			{deleteError && <Alert type="error">{deleteError}</Alert>}
 			<DeleteData setDeleteError={setDeleteError} user={row} />
 
 			<p>

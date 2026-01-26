@@ -12,20 +12,9 @@ export default function Fields() {
 
 	return (
 		<>
-			<Field
-				label={formState.row.action_type.is_continuous ? 'Start date' : 'Date'}
-				name="start_date"
-				required
-				type="text"
-			/>
+			<Field label={formState.row.action_type.is_continuous ? 'Start date' : 'Date'} name="start_date" required type="text" />
 
-			{Boolean(formState.row.action_type.is_continuous) && (
-				<Field
-					label="End date"
-					name="end_date"
-					type="text"
-				/>
-			)}
+			{formState.row.action_type.is_continuous ? <Field label="End date" name="end_date" type="text" /> : null}
 
 			{formState.row.action_type.field_type !== 'button' && (
 				<Field
@@ -48,11 +37,7 @@ export default function Fields() {
 				/>
 			)}
 
-			<Field
-				label="Notes"
-				name="notes"
-				type="textarea"
-			/>
+			<Field label="Notes" name="notes" type="textarea" />
 		</>
 	);
 }

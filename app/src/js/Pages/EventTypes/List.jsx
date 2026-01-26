@@ -23,15 +23,11 @@ export default function List() {
 	}, []);
 
 	if (error) {
-		return (
-			<Error error={error} />
-		);
+		return <Error error={error} />;
 	}
 
 	if (rows === null) {
-		return (
-			<MetaTitle title="Event types" />
-		);
+		return <MetaTitle title="Event types" />;
 	}
 
 	return (
@@ -48,9 +44,7 @@ export default function List() {
 						</li>
 					))}
 				</ul>
-			) : (
-				<p>No event types found.</p>
-			)}
+			) : <p>No event types found.</p>}
 		</>
 	);
 }

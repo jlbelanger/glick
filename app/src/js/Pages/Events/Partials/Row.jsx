@@ -13,12 +13,8 @@ export default function Row({ rows, ymd }) {
 				<tr className="table__row" key={row.id}>
 					<td>
 						<Link className="table__link" to={`/events/${row.id}`}>
-							<span className="table__label">
-								{getEventLabel(row)}
-							</span>
-							<span className="table__time">
-								{prettyTime(row.start_date)}
-							</span>
+							<span className="table__label">{getEventLabel(row)}</span>
+							<span className="table__time">{prettyTime(row.start_date)}</span>
 						</Link>
 					</td>
 				</tr>

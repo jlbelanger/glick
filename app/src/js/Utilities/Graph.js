@@ -6,11 +6,11 @@ export const getChartUnit = (fromDateObject, toDateObject) => {
 	let unit = 'year';
 	if (diff <= oneDayInMilliseconds) {
 		unit = 'hour';
-	} else if (diff <= (oneDayInMilliseconds * 7)) {
+	} else if (diff <= oneDayInMilliseconds * 7) {
 		unit = 'day';
-	} else if (diff <= (oneDayInMilliseconds * 31)) {
+	} else if (diff <= oneDayInMilliseconds * 31) {
 		unit = 'week';
-	} else if (diff <= (oneDayInMilliseconds * 365)) {
+	} else if (diff <= oneDayInMilliseconds * 365) {
 		unit = 'month';
 	}
 	return unit;
@@ -22,11 +22,11 @@ export const getDefaultChartUnit = (fromDateObject, toDateObject) => {
 	const diff = max - min;
 	const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
 	let unit = 'year';
-	if (diff <= (oneDayInMilliseconds * 7)) {
+	if (diff <= oneDayInMilliseconds * 7) {
 		unit = 'day';
-	} else if (diff <= (oneDayInMilliseconds * 31)) {
+	} else if (diff <= oneDayInMilliseconds * 31) {
 		unit = 'week';
-	} else if (diff <= (oneDayInMilliseconds * 365 * 5)) {
+	} else if (diff <= oneDayInMilliseconds * 365 * 5) {
 		unit = 'month';
 	}
 	return unit;
@@ -40,7 +40,7 @@ export const getChartTooltipFormat = (unit) => {
 		return 'MMM yyyy';
 	}
 	if (unit === 'week') {
-		return 'yyyy \'W\'W';
+		return "yyyy 'W'W";
 	}
 	if (unit === 'day') {
 		return 'MMM d, yyyy';
@@ -149,7 +149,7 @@ export const lineGraphData = (actionType, actions) => {
 		output.labels.push(action.dateObject);
 		if (/^[0-9./]+$/.test(action.value)) {
 			action.value.split('/').forEach((value, i) => {
-				if (points.length < (i + 1)) {
+				if (points.length < i + 1) {
 					points.push([]);
 				}
 				points[i].push(value);

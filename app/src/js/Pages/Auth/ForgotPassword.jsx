@@ -41,7 +41,7 @@ export default function ForgotPassword() {
 		>
 			<MetaTitle title="Forgot your password?" />
 
-			{message && (<Alert type={message.type}>{message.text}</Alert>)}
+			{message && <Alert type={message.type}>{message.text}</Alert>}
 
 			<Field
 				autoComplete="email"
